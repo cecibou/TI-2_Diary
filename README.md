@@ -1,4 +1,5 @@
 [![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=297108&assignment_repo_type=GroupAssignmentRepo)
+
 # Template de Projeto
 
 Este é um repositório _template_ que tem como principal objetivo
@@ -31,7 +32,7 @@ Esta pasta arquiva a documentação dos projetos, sendo que o arquivo
 [`Projeto.md`](docs/Projeto.md) deve ser utilizado como documento principal, que concentra
 toda a informação do projeto em questão.
 
-Este _template_ fornece detalhes de todos os itens  que o arquivo
+Este _template_ fornece detalhes de todos os itens que o arquivo
 `Projeto.MD` deve conter, bem como orientações gerais de como os itens
 podem ser desenvolvidos.
 
@@ -48,7 +49,7 @@ básica de projetos Web simples, que utilizam as tecnologias HTML, CSS e
 JavaScript:
 
 - O diretório `assets` é utilizado para armazenar imagens, fontes e
-  outros recursos utilizados no projeto. 
+  outros recursos utilizados no projeto.
 - O diretório `scripts` armazena os arquivos JavaScripts do projeto
 - O diretório `styles` é utilizado para os arquivos CSS
 - o diretório `vendor` é reservado para incluir bibliotecas e frameworks
@@ -56,7 +57,8 @@ JavaScript:
 
 # Orientações Gerais Sobre o Projeto
 
-
-- Aprenda Markdown e Use-o para Documentar o Projeto  ([link
+- Aprenda Markdown e Use-o para Documentar o Projeto ([link
   1](https://guides.github.com/features/mastering-markdown/) | [link
-2](https://help.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github)) 
+  2](https://help.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github))
+
+teste
