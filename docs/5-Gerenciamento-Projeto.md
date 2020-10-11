@@ -8,21 +8,21 @@ A equipe está organizada da seguinte maneira:
 
 - Scrum Master: Danielle Dias Vieira
 
-- Equipe de Desenvolvimento:
-  Arthur Crossy Mendes;
-  Daniel Vitor de Oliveira Santos;
-  Danielle Dias Vieira;
-  Luiz Fernando Carneiro Rodrigues;
-  Natã Oliveira Sousa;
-  Rodolfo Sousa Lopes.
+- Equipe de Desenvolvimento:<br>
+  Arthur Crossy Mendes;<br>
+  Daniel Vitor de Oliveira Santos;<br>
+  Danielle Dias Vieira;<br>
+  Luiz Fernando Carneiro Rodrigues;<br>
+  Natã Oliveira Sousa;<br>
+  Rodolfo Sousa Lopes.<br>
 
-- Equipe de Design:
-  Daniel Vitor de Oliveira Santos;
-  Natã Oliveira Sousa.
+- Equipe de Design:<br>
+  Daniel Vitor de Oliveira Santos;<br>
+  Natã Oliveira Sousa.<br>
 
 ## Processo
 
-A equipe utiliza metodologias ágeis, tendo escolhido o Scrumban como base para definição do processo de desenvolvimento. Scrumban é uma metodologia de desenvolvimento Agile que é um híbrido de Scrum e Kanban. Usa a natureza prescritiva do Scrum para ser Ágil. Usa a melhoria de processo do Kanban para permitir que a equipe melhore continuamente seu processo.
+A equipe utiliza metodologias ágeis, tendo escolhido o Scrumban como base para definição do processo de desenvolvimento. Scrumban (termo cunhado pelo Corey Ladas em 2008), é uma metodologia de desenvolvimento Agile que é um híbrido de Scrum e Kanban. Usa a natureza prescritiva do Scrum para ser Ágil. Usa a melhoria de processo do Kanban para permitir que a equipe melhore continuamente seu processo.
 
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o Trello estruturado com as seguintes listas:
 
@@ -41,10 +41,10 @@ A definição desta estrutura teve como referência a proposta feita por Andrew 
 
 Ela está representada, no estado atual, pela imagem abaixo:
 
-[![Slack](images/trel.png)]
+![Trello Listas](/images/trel.png)
 
-As tarefas seguem o seguinte esquema de cores:
-[![Slack](images/trell.png)]
+As tarefas seguem o seguinte esquema de cores:<br>
+![Trello Cores](/images/trell.png)
 
 ## Ferramentas
 
