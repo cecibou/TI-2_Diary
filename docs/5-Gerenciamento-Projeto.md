@@ -41,10 +41,10 @@ A definição desta estrutura teve como referência a proposta feita por Andrew 
 
 Ela está representada, no estado atual, pela imagem abaixo:
 
-![Trello Listas](/images/trel.png)
+[![Trello Listas](/images/trel.png)]
 
 As tarefas seguem o seguinte esquema de cores:<br>
-![Trello Cores](/images/trell.png)
+[![Trello Cores](/images/trell.png)]
 
 ## Ferramentas
 
