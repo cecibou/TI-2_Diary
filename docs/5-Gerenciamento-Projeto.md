@@ -1,29 +1,50 @@
 # Gerenciamento de Projeto
 
-> Descreva aqui a metodologia de trabalho do grupo para atacar o
-> problema.
+> A metodologia contempla as definições ferramentais que serão utilizados pela equipe tanto para a manutenção dos códigos e demais artefatos, quanto para a organização do time na execução das tarefas do projeto.
 
 ## Divisão de Papéis
 
-> Apresente a divisão de papéis entre os membros do grupo.
->
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu 
-> Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+A equipe está organizada da seguinte maneira:
+
+- Scrum Master: Danielle Dias Vieira
+
+- Equipe de Desenvolvimento:
+  Arthur Crossy Mendes;
+  Daniel Vitor de Oliveira Santos;
+  Danielle Dias Vieira;
+  Luiz Fernando Carneiro Rodrigues;
+  Natã Oliveira Sousa;
+  Rodolfo Sousa Lopes.
+
+- Equipe de Design:
+  Daniel Vitor de Oliveira Santos;
+  Natã Oliveira Sousa.
 
 ## Processo
 
-> Coloque  informações sobre detalhes da implementação do Scrum seguido
-> pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar
-> o andamento do projeto, a execução das tarefas e o status de desenvolvimento
-> da solução.
-> 
-> **Links Úteis**:
-> - [Tutorial Trello](https://trello.com/b/8AygzjUA/tutorial-trello)
-> - [Gestão ágil de projetos com o Trello](https://www.youtube.com/watch?v=1o9BOMAKBRE)
-> - [Gerência de projetos - Trello com Scrum](https://www.youtube.com/watch?v=DHLA8X_ujwo)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
+A equipe utiliza metodologias ágeis, tendo escolhido o Scrumban como base para definição do processo de desenvolvimento. Scrumban é uma metodologia de desenvolvimento Agile que é um híbrido de Scrum e Kanban. Usa a natureza prescritiva do Scrum para ser Ágil. Usa a melhoria de processo do Kanban para permitir que a equipe melhore continuamente seu processo.
+
+Para organização e distribuição das tarefas do projeto, a equipe está utilizando o Trello estruturado com as seguintes listas:
+
+- `Recursos`: Esta lista contém tarefas que são como legendas das cores de cada cartão e também serão utilizadas para cópia de tarefas, agilizando assim a criação de novos cartões.
+- `Backlog`: Todos os artefatos identificados por todo o projeto. Representa o Product Backlog.
+- `To Do`: Esta lista é o Sprint atual que estamos trabalhando.
+- `Doing`: Quando uma tarefa tiver sido iniciada, ela é movida para esta lista.
+- `Test`: Quando as tarefas são concluídas são movidas para esta lista, são testadas e é feito a revisão.`
+- `Done`: Nesta lista são colocadas as tarefas concluídas, as que já foram revisadas e estão prontas para serem entregues para o cliente.
+
+O quadro do Kanban do grupo está disponível no Trello, através da URL a seguir:
+
+- Trello: https://trello.com/b/dn1hSkir/projeto-diary
+
+A definição desta estrutura teve como referência a proposta feita por Andrew Littlefield em 2016.
+
+Ela está representada, no estado atual, pela imagem abaixo:
+
+[![Slack](images/trel.png)]
+
+As tarefas seguem o seguinte esquema de cores:
+[![Slack](images/trell.png)]
 
 ## Ferramentas
 
@@ -41,10 +62,11 @@ necessidades da nossa solução.
 
 > Liste quais ferramentas foram empregadas no desenvolvimento do
 > projeto, justificando a escolha delas, sempre que possível.
-> 
-> **Possíveis Ferramentas que auxiliarão no gerenciamento**: 
+>
+> **Possíveis Ferramentas que auxiliarão no gerenciamento**:
+>
 > - [![Slack](images/slack.jpg)](https://slack.com/)
 > - [![Trello](images/trello.png)](https://trello.com/)
-> 
+>
 > - [![Microsof Project](images/project.png)](https://products.office.com/pt-br/project/project-and-portfolio-management-software)
 > - [![Redbooth](images/redbooth.png)](https://redbooth.com/)
