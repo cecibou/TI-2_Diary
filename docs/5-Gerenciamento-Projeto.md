@@ -43,7 +43,9 @@ Ela está representada, no estado atual, pela imagem abaixo:
 
 ![Trello-Listas](images/trel.png)
 
-As tarefas seguem o seguinte esquema de cores:<br>
+As tarefas seguem o seguinte esquema de cores:
+<br>
+<br>
 ![Trello-Cores](images/trell.png)
 
 ## Ferramentas
