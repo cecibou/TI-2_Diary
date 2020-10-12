@@ -1,19 +1,23 @@
 # Informações do Projeto
-`TÍTULO DO PROJETO`  
+
+`DIARY`
 
 Trabalho Interdisciplinar - Aplicacões Web
 
-`CURSO`
+`Ciência da Computação`
 
-`SEMESTRE`
+`1° Semestre`
 
 ## Participantes
 
-Os membros do grupo são: 
-- Fulano da Silva
-- Ciclano Albuquerque
+Os membros do grupo são:
 
-> Inclua a lista dos membros da equipe com seus nomes completos.
+- Arthur Crossy Mendes;
+- Daniel Vitor de Oliveira Santos;
+- Danielle Dias Vieira;
+- Luiz Fernando Carneiro Rodrigues;
+- Natã Oliveira Sousa;
+- Rodolfo Sousa Lopes.
 
 # Estrutura do Documento
 

@@ -1,17 +1,34 @@
-[![Work in Repl.it](https://classroom.github.com/assets/work-in-replit-14baed9a392b3a25080506f3b7b6d57f295ec2978f6f33ec97e36a161684cbe9.svg)](https://classroom.github.com/online_ide?assignment_repo_id=297108&assignment_repo_type=GroupAssignmentRepo)
-
 # Template de Projeto
 
-Este é um repositório _template_ que tem como principal objetivo
-fornecer uma estrutura inicial para projetos da disciplina _Trabalho
-Interdisciplina - Aplicações Web_ da PUC Minas.
+![Logo](images/Logo.jpeg)
+<br>
 
-Aqui você encontrará orientações de como estruturar o projeto e
-desenvolver seus respectivos artefatos.
+## Nome do Projeto: DIARY
+
+Esde projeto é a criação de um dispositivo web, que, realize cálculos financeiros para diversos fins, que oscilam desde compras do dia a dia até investimentos. Além disso, que seja interativa, e que permita o acesso a uma grande parte da população. Que com este dispositivo os homens e as mulheres de 50 a 70 anos possam gerir melhor seu dinheiro.
+
+## Tecnologias
+
+As tecnologias utilizadas neste projeto foram:
+
+- HTML
+- CSS
+- JavaScript
+
+## Funcionalidades
+
+- Notícias de Gestão de Investimentos
+- Agenda para organização financeira
+- Atendimento para retirar dúvidas financeiras
+- Calculadora financeira interativa
+
+## Link para acessar nosso Site
+
+- (https://projeto-diary.netlify.app/index.html)
 
 # Estrutura de Diretórios
 
-Este _template_ adota a seguinte estrutura de diretórios:
+Este _Template_ adota a seguinte estrutura de diretórios:
 
 - `docs`
   - `images`
@@ -21,26 +38,14 @@ Este _template_ adota a seguinte estrutura de diretórios:
   - `styles`
   - `vendor`
 
-> O grupo é livre para alterar a estrutura proposta. No entanto, nesse
-> caso, o arquivo `README.md` deve ser devidamente modificado para
-> detalhar a nova estrutura e onde cada um dos artefatos produzidos
-> estão localizados.
-
 ## docs
 
-Esta pasta arquiva a documentação dos projetos, sendo que o arquivo
-[`Projeto.md`](docs/Projeto.md) deve ser utilizado como documento principal, que concentra
+Esta pasta arquiva a documentação do projeto, sendo que o arquivo
+[`Projeto.md`](docs/Projeto.md) concentra
 toda a informação do projeto em questão.
 
-Este _template_ fornece detalhes de todos os itens que o arquivo
-`Projeto.MD` deve conter, bem como orientações gerais de como os itens
-podem ser desenvolvidos.
-
-Na pasta `docs`, há uma subpasta `images` que deve arquivar todas as
+Na pasta `docs`, há uma subpasta `images` que arquiva todas as
 imagens utilizadas para a elaboração do documento [`Projeto.md`](docs/Projeto.md).
-
-A presentação do projeto, deve ser entregue à parte em formato `pdf` e
-podem devem ser colocada no diretório `docs`.
 
 ## src
 
@@ -60,3 +65,5 @@ JavaScript:
 - Aprenda Markdown e Use-o para Documentar o Projeto ([link
   1](https://guides.github.com/features/mastering-markdown/) | [link
   2](https://help.github.com/pt/github/writing-on-github/getting-started-with-writing-and-formatting-on-github))
+
+Obrigado por visitar nosso repositório, por favor acesse nosso site e desfrute de nossas funcionalidades!
