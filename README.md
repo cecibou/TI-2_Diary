@@ -1,6 +1,6 @@
 # Template de Projeto
 
-![Logo](images/Logo.jpeg)
+<img src="images/Logo.jpeg" alt="Logo">
 <br>
 
 ## Nome do Projeto: DIARY
