@@ -31,6 +31,11 @@ navbar {
     height: 100%;
 }
 
+.carousel .carousel-inner a {
+    text-decoration:none;
+    color: black;
+}
+
 .carousel .carousel-caption {
     position: absolute;
     top: 50%;
@@ -61,6 +66,7 @@ navbar {
     border: 1px solid #ffe852;
     color: #000;
 }
+
 /*Call to Action*/
 .call-to-action h2, .img-fluid img {
     padding-bottom: 2rem;
@@ -185,7 +191,7 @@ navbar {
 } 
 /*Imagem Fixa*/
 .imagem #fixed {
-    background-image: url('/tiaw-pmg-cc-t-20202-gestao-de-investimentos/src/assets/imagem1.jpg');
+    background-image: url('/src/assets/imagem1.jpg');
     height: 400px;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -234,7 +240,7 @@ navbar {
 }
 
 .duvidas .card-body {
-    background: #cccccc;
+    background: #fff;
 }
 
 .duvidas .btn-link:after {
@@ -335,15 +341,7 @@ navbar {
     overflow: hidden;
     position: relative;
 }
-/*Renda Fixa*/
-.investment .c2a1 style {
-    transition: all 0.2s linear;
-}
-NÃO ESTA FUNCIONANDO, COLOQUE UMA IMG PARA DAR O ZOOM
-.investment .c2a1 style:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-}
+/*Investimentos*/
 
 .c2a1 {
 	background-position: center top;
@@ -368,6 +366,11 @@ NÃO ESTA FUNCIONANDO, COLOQUE UMA IMG PARA DAR O ZOOM
     font-size: 16px;
 }
 
+/*Services*/
+
+.services li {
+    list-style-type: none;
+}
 /*Contatos*/
 .contatos textarea {
     width: 100%;
@@ -376,8 +379,8 @@ NÃO ESTA FUNCIONANDO, COLOQUE UMA IMG PARA DAR O ZOOM
 
 /*Footer*/
 footer {
-    background-color: #3f3f3f;
-    color: #d5d5d5;
+    background-color: #f0f03a;
+    color: #0b0d12;
     padding-top: 2rem;
 }
 
@@ -393,7 +396,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #d5d5d5;
+    color: #666d7e;
 }
 
 hr.light-100 {
@@ -533,5 +536,13 @@ footer .form-control {
     .google-maps #map {
         height: 250px;
         width: 100%;
+    }
+    /*Servicos*/
+    .services {
+        text-align: center;
+    }
+    /*Footer*/
+    footer .assine {
+        display: none;
     }
 }
