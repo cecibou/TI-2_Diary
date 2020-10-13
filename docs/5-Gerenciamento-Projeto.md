@@ -50,27 +50,26 @@ As tarefas seguem o seguinte esquema de cores:
 <br>
 ![Trello-Cores](images/trell.png)
 
-## Ferramentas
+## Ambientes
 
-As ferramentas empregadas no projeto são:
+Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com os seus respectivos propósitos são apresentadas na tabela que se segue.
 
-- Editor de código.
-- Ferramentas de comunicação
-- Ferramentas de diagramação
+| **Ambiente**                      | **Plataforma**         | **Link de Acesso**                                                                                      |
+| --------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| Repositório de código fonte       | GitHub                 | https://github.com/ICEI-PUC-Minas-PMGCC-TI/tiaw-pmg-cc-t-20202-gestao-de-investimentos                  |
+| Documentos do projeto             | GitHub                 | https://github.com/ICEI-PUC-Minas-PMGCC-TI/tiaw-pmg-cc-t-20202-gestao-de-investimentos/tree/master/docs |
+| Gerenciamento do Projeto          | Trello                 | https://trello.com/b/dn1hSkir/projeto-diary                                                             |
+| Projeto de Interface e Wireframes | MarvelApp              | https://marvelapp.com/prototype/25j896dg/section/1150219                                                |
+| Editor de código-fonte            | Editor de código-fonte | https://code.visualstudio.com/                                                                          |
 
-O editor de código foi escolhido porque ele possui uma integração com o
-sistema de versão. As ferramentas de comunicação utilizadas possuem
-integração semelhante e por isso foram selecionadas. Por fim, para criar
-diagramas utilizamos essa ferramenta por melhor captar as
-necessidades da nossa solução.
+Foi escolhido o GitHub para Repositório de código fonte e dos documentos do projeto, pois é uma plataforma que pode ser utilizada por qualquer usuário de forma grátis e porque tem seu controle de versão baseado no Git. Ela também é uma plataforma que alguns membros da equipe já tinham familiaridade para trabalhar. E como são 6 contribuidores ao mesmo tempo, com o GitHub e o Git, é possível várias pessoas trabalhando em suas tarefas, tendo menos risco de conflitos no código.
 
-> Liste quais ferramentas foram empregadas no desenvolvimento do
-> projeto, justificando a escolha delas, sempre que possível.
->
-> **Possíveis Ferramentas que auxiliarão no gerenciamento**:
->
-> - [![Slack](images/slack.jpg)](https://slack.com/)
-> - [![Trello](images/trello.png)](https://trello.com/)
->
-> - [![Microsof Project](images/project.png)](https://products.office.com/pt-br/project/project-and-portfolio-management-software)
-> - [![Redbooth](images/redbooth.png)](https://redbooth.com/)
+Foi escolhido o aplicativo Trello para gerenciar as tarefas do projeto, pois também é grátis e tem cartões com as tarefas de forma intuitiva. É uma ferramenta que se pode utilizar com facilidade.
+
+Foi escolhido o aplicativo MarvelApp, pois para criar o design e Wireframe não é necessário nenhum código, é possível realizar designs interativos de forma intuitiva e também é grátis a plataforma.
+
+Foi escolhido o editor de código fonte Visual Studio Code, pois ele tem controle de Git já incorporado, é possível instalar várias extensões de linguagens, edição de temas e idiomas, conectar serviços adicionais, entre outros. Todos da equipe já utilizam este software facilitando o trabalho e a interação de todos.
+
+É utilizado também as redes sociais Whatsapp e Microsoft Teams para a comunicação da equipe, pois são aplicativos que toda a equipe já conhece e tem facilidade no uso do dia a dia.
+
+As ferramentas utilizadas para construir os diagramas foi o Miro e o Dia (GNOME), porque os membros já conheciam estes softwares, são intuitivos e gratuitos.
