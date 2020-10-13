@@ -1,8 +1,5 @@
 # Template de Projeto
 
-<img src="images/Logo.png" alt="Logo">
-<br>
-
 ## Nome do Projeto: DIARY
 
 Esde projeto é a criação de um dispositivo web, que, realize cálculos financeiros para diversos fins, que oscilam desde compras do dia a dia até investimentos. Além disso, que seja interativa, e que permita o acesso a uma grande parte da população. Que com este dispositivo os homens e as mulheres de 50 a 70 anos possam gerir melhor seu dinheiro.
