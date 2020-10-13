@@ -19,8 +19,23 @@
 
 ## Arquitetura da solução
 
-> Inclua um diagrama da solução e descreva os módulos e as tecnologias
-> que fazem parte da solução. Discorra sobre o diagrama.
+###Diagrama de Componentes - Gestão de Investimentos
+![Exemplo de UserFlow](/images/Arquitetura.png)
+
+####Navegador:
+Meio pelo qual nossa solução será acessada.Consiste de:
+*Website:Conjunto de páginas Web,feitas a partir de arquivos HTML,CSS E JavaScript.
+*Local Storage/Cookies:O armazenamento será mantido no navegador no projeto final pelo Local Storage,no entanto,
+nessa entrega inicial será salvo por cookies.
+  *Agenda:Salva os investimentos colocados no site pelo usuário.
+  *Login:Necessário para entrar na agenda na entrega final.
+*APIs:Aplicativos feitos por terceiros que serão utilizados na solução.São eles:
+  *Bloomberg Market and Financial News: Trará informações para serem utilizadas na calculadora do site.
+  *OpenStreetMaps:Projeto Open-Source  para mostrar a localização do escritório da empresa.
+*Hospedagem:
+O website usa a plataforma netlify nas releases iniciais,mas na final,será utilizado o serviço Heroku.
+  *Link:
+https://projeto-diary.netlify.app/
 
 A imagem a seguir ilustra a o fluxo do usuário em nossa solução. Assim
 que o usuário entra na plataforma, ele é apresentado à tela inicial
