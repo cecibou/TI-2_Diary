@@ -1,61 +1,58 @@
 # Introdução
 
+>Em paralelo ao avanço do tempo, as pessoas continuam perdendo cada vez
+mais dinheiro. Muitas vezes isso ocorre por falta de conhecimentos simples, como
+matemática financeira, e a relação da taxa de juros, elevando cada vez mais o
+montante final. Além disso, as classes mais elevadas da pirâmide etária sofrem com
+o denominado analfabetismo digital, aumentando cada vez mais essa bola de neve
+financeira. Devido a isso, avalia-se a necessidade de corrigir essas dores, que
+representam uma parcela elevada da população brasileira que sofre com esse
+problema.
+
+Diante disso, torna-se fundamental que uma aplicação web com um
+mecanismo que permita o usuário acesso interativo, confiável, e, além de tudo, que
+ofereça ao usuário informações acerca de sua condição financeira, exista.
+
 ## Problema
-> Nesse momento você deve apresentar o problema que a sua aplicação deve
-> resolver. No entanto, não é a hora de comentar sobre a aplicação.
-> Descreva também o contexto em que essa aplicação será usada, se
-> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
-> fato existir, pois ainda não é a hora de apresentar requisitos
-> detalhados ou projetos.
+
+Conforme explicitado acima, a problemática em questão que rodeia esse
+projeto é a de corrigir um desafio muito grande presente em uma parcela enorme
+da população brasileira. Devido a um ensino pouco prático no Brasil, que,
+negligenciou o ensino de educação financeira e informática, fez-se com que esse
+grupo de pessoas desenvolvesse a necessidade de uma plataforma confiável e
+interativa, que calcule o verdadeiro montante financeiro, de compras, investimentos
+com confiabilidade, agilidade, eficiência e segurança.
+
 >
-> Nesse momento, o grupo pode optar por fazer uso
-> de ferramentas como Design Thinking, que permite um olhar de ponta a
-> ponta para o problema.
->
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+
 
 ## Objetivos
 
-> Aqui você deve descrever os objetivos do trabalho indicando que o
-> objetivo geral é desenvolver um software para solucionar o problema
-> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
-> específicos dependendo de onde você vai querer concentrar a sua
-> prática investigativa, ou como você vai aprofundar no seu trabalho.
-> 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+O objetivo geral desde trabalho é a criação de um dispositivo web, que,
+realize cálculos financeiros para diversos fins, que oscilam desde compras do dia a
+dia até investimentos. Além disso, que seja interativa, e que permita o acesso a
+uma grande parte da população. 
+	Devido a isso, ressalta-se:
+
+    - Fornecer uma calculadora que realize cálculos financeiros, desde compras
+    comuns, até cálculos financeiros um pouco mais robústos;
+    - De fácil acesso, que utilize linguagem do cotidiano, ao invés do “matemátiques’’ financeiro;
+    - Se possível, utilize outras funcionalidades que ajude o dia a dia, das
+    pessoas, como uma agenda, fluxo de caixa, etc.
+
+
 
 ## Justificativa
 
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
-> 
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Segundo o Instituto de Defesa do Consumidor (IDEC), o Brasil tem mais de 30 milhões de superendividados, ou seja, pessoas que não possuem condições financeiras para pagar suas dívidas. Esse número representa a metade dos brasileiros que estão negativados, ou seja, representa a bola de neve financeira gerada por um controle de gastos ineficiente. Somado a isso, uma reportagem do “The Economist’’, alerta que, o Analfabetismo digital segura o avanço do acesso á internet no Brasil, ele alerta que o Brasil aparece na 31° posição no ranking geral em uma lista que abrange 100 países. Isso demonstra que há um grande número de pessoas com  pouco convívio em  aplicativos web. Dessa forma, evidencia-se a necessidade de utilizar aplicativos web bem interativos, simples, focados na experiência do usuário, para fazer com que o cliente se sinta bem confortável em relação á aplicação. Além disso, fontes de pesquisa como o PISA ( programa internacional de avaliação de estudantes ), divulga, em 2019, o Brasil em uma média posicional de 72° e 74° posição em matemática, devido a variação da margem de erro. Este dado  acusa o abismo que o povo brasileiro enfrenta em relação à matemática dificultando assim, seu aprendizado. Além disso, uma reportagem da Globo demonstra que, em relação a faixa de renda, idosos correspondem a 17,44% dos 5% mais ricos brasileiros e 1,64% dos 5% mais pobres.
+
+Contudo, todos esses dados a cerca de educação, renda, índices de educação e endividamento demonstra a demanda de um mecanismo que envolva todas essas dores de uma forma, simples, eficiente, confiável, devido a isso, se deve a criação de um aplicativo web desta natureza.
 
 ## Público-Alvo
 
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
-> 
-> **Links Úteis**:
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Conforme explicitado acima, com os inúmeros dados, através de pesquisas, entrevistas, qualitativas, estabeleceu-se como público-alvo desta solução os homens e as mulheres de 50 a 70 anos, que se encontram no mercado de trabalho, desde funcionários públicos do judiciário, executivo, repartições administrativas, cargos da iniciativa privada, que se situam na classe média até as classes mais elevadas.
+
+Diante disso, demonstra que é um público com renda elevada, pouco contato com tecnologias digitais, já que normalmente cargos públicos são mais burocráticos, e não evidencia tanta necessidade de atualização, dessa forma, possuem renda elevada, não tiveram educação formal financeira, e em relação a informática. Com isso, definimos essa amostra como o público alvo da aplicação web.
+
+
  
