@@ -38,7 +38,7 @@ uma grande parte da população.
 - De fácil acesso, que utilize linguagem do cotidiano, ao invés do “matemátiques’’ financeiro;
 - Se possível, utilize outras funcionalidades que ajude o dia a dia, das
     pessoas, como uma agenda, fluxo de caixa, etc.
-> teste
+
 
 
 ## Justificativa
