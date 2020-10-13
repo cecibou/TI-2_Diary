@@ -1,61 +1,53 @@
 # Introdução
 
+Em paralelo ao avanço do tempo, as finanças das pessoas continuam evoluindo cada vez mais, se tornando mais complexas, e com isso muitas pessoas estão perdendo cada vez mais dinheiro.
+
+Esse fato pode vir a ocorrer devido à falta de conhecimentos simples, como matemática financeira e relação de taxa de juros. Além disso, as classes mais elevadas da pirâmide etária, sofrem com o denominado “analfabetismo digital”, aumentando cada vez mais essa bola de neve financeira. Devido a isso, avalia-se a necessidade de corrigir essas questões, pois uma grande parcela da população sofre com esse problema.
+
+Sendo assim, uma aplicação web, com um mecanismo que permita o usuário um acesso interativo, confiável, e além de tudo, que ofereça informações acerca de sua condição financeira e da condição financeira mundial, pode vir a ser a solução ideal para resolver esse problema.
+
+
+
 ## Problema
-> Nesse momento você deve apresentar o problema que a sua aplicação deve
-> resolver. No entanto, não é a hora de comentar sobre a aplicação.
-> Descreva também o contexto em que essa aplicação será usada, se
-> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
-> fato existir, pois ainda não é a hora de apresentar requisitos
-> detalhados ou projetos.
->
-> Nesse momento, o grupo pode optar por fazer uso
-> de ferramentas como Design Thinking, que permite um olhar de ponta a
-> ponta para o problema.
->
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+
+A problemática que rodeia esse projeto é a questão de corrigir ou atenuar uma dificuldade muito grande presente em uma enorme parcela da população brasileira, a qual seria a má gestão financeira.
+
+Devido a um ensino pouco prático no Brasil, que negligenciou o ensino de educação financeira e informática, fez-se com que esse grupo de pessoas percebesse a necessidade de uma plataforma web confiável e interativa, para gerir com segurança as finanças, calcular o verdadeiro montante financeiro, de compras e investimentos, atualizar os leitores com notícias a respeito da gestão de finanças, criar uma agenda financeira para facilitar a gestão. Tudo isso deverá ser gerado com confiabilidade, agilidade, eficiência e segurança.
+
+
 
 ## Objetivos
 
-> Aqui você deve descrever os objetivos do trabalho indicando que o
-> objetivo geral é desenvolver um software para solucionar o problema
-> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
-> específicos dependendo de onde você vai querer concentrar a sua
-> prática investigativa, ou como você vai aprofundar no seu trabalho.
-> 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+### Objetivo Geral
+
+O objetivo geral desde trabalho é a criação de um dispositivo web, que, realize cálculos financeiros para diversos fins, que oscilam desde compras do dia a dia até investimentos, que também tenha um portal de notícias atualizadas sobre gestão financeira e uma agenda para facilitar a gestão. Além disso, que seja interativa, e que permita o acesso a uma grande parte da população. 
+
+### Objetivos Específicos
+
+- Fornecer uma calculadora que realize cálculos financeiros, desde compras comuns, até cálculos financeiros um pouco mais robústos;
+- Criação de uma agenda para gestão financeira, como fluxo de caixa;
+- Portal de notícias atualizadas sobre finanças;
+- De fácil acesso, intuitivo, que utilize linguagem do cotidiano;
+
+
 
 ## Justificativa
 
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
-> 
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Segundo o Instituto de Defesa do Consumidor (IDEC), o Brasil tem mais de 30 milhões de pessoas superendividadas, ou seja, pessoas que não possuem condições financeiras para pagar suas dívidas. Esse número representa a metade dos brasileiros que estão negativados, ou seja, representa a bola de neve financeira gerada por um controle de gastos ineficiente.
+
+Somado a isso, uma reportagem do “The Economist’’, alerta que, o Analfabetismo digital segura o avanço do acesso a internet no Brasil, ele alerta que o Brasil aparece na 31° posição no ranking geral em uma lista que abrange 100 países. Isso demonstra que há um grande número de pessoas com  pouco convívio em  aplicativos web. 
+
+Dessa forma, evidencia-se a necessidade de utilizar aplicativos web bem interativos, simples, focados na experiência do usuário, para fazer com que o cliente se sinta bem confortável em relação à aplicação. Além disso, fontes de pesquisa como o PISA ( Programa Internacional de Avaliação de Estudantes ), divulgada, em 2019, o Brasil em uma média posicional de 72° e 74° posição em matemática, devido a variação da margem de erro. Este dado  acusa o abismo que o povo brasileiro enfrenta em relação à matemática dificultando assim, seu aprendizado. Além disso, uma reportagem da Globo demonstra que, em relação a faixa de renda, idosos correspondem a 17,44% dos 5% mais ricos brasileiros e 1,64% dos 5% mais pobres. 
+
+Contudo, todos esses dados a cerca de educação, renda, índices de educação e endividamento, demonstram a demanda de um mecanismo que envolva todas essas dores de uma forma, simples, eficiente, confiável, e devido a isso, se deve a criação de um aplicativo web desta natureza.
+
 
 ## Público-Alvo
 
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
-> 
-> **Links Úteis**:
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Conforme explicitado acima, com os inúmeros dados, através de pesquisas e entrevistas qualitativas, estabeleceu-se como público-alvo desta solução os homens e as mulheres de 50 a 70 anos, que se encontram no mercado de trabalho, desde funcionários públicos do judiciário, executivo, repartições administrativas, cargos da iniciativa privada, que se situam na classe média até as classes mais elevadas.
+
+Diante disso, constatamos que é um público com renda elevada, pouco contato com tecnologias digitais, já que normalmente cargos públicos são mais burocráticos, e não evidência tanta necessidade de atualização. Dessa forma, possuem renda elevada, não tiveram educação formal financeira, e nem em relação a informática. Com isso, definimos essa amostra como o público alvo desta aplicação web.
+
+
+
  
