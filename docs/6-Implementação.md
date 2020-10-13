@@ -39,10 +39,7 @@ nessa entrega inicial será salvo por cookies.
 
 	- OpenStreetMaps:Projeto Open-Source  para mostrar a localização do escritório da empresa.
 
--Hospedagem:
-
-O website usa a plataforma netlify nas releases iniciais,mas na final,será utilizado o serviço Heroku.
-
+- Hospedagem:O website usa a plataforma netlify nas releases iniciais,mas na final,será utilizado o serviço Heroku.
 	- Link:
 https://projeto-diary.netlify.app/
 
