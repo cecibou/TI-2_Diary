@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Calculadora</title>
     <script src="scripts/app.js"></script>
+    <link rel="shortcut icon" href="assets/diary.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -18,34 +19,54 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container-fluid">
-                <a href="/tiaw-pmg-cc-t-20202-gestao-de-investimentos/src/index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png" alt=""></a>
+                <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a href="/tiaw-pmg-cc-t-20202-gestao-de-investimentos/src/index.html" class="nav-link">Home</a>
+                            <a href="index.html" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Investimentos</a>
+                            <a href="investments.html" class="nav-link">Investimentos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Serviços</a>
+                            <a href="services.html" class="nav-link">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/tiaw-pmg-cc-t-20202-gestao-de-investimentos/src/aboutus.html" class="nav-link">Quem somos</a>
+                            <a href="aboutus.html" class="nav-link">Quem somos</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Contatos</a>
+                            <a href="contacts.html" class="nav-link">Contatos</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-
+    <!--Aviso-->
+    <section >
+        <h3 class="text-center padding container-fluid">Em desenvolvimento.</h3>
+    </section>
+    <!--Redes Sociais-->
+    <section class="redes-sociais">
+        <div class="container-fluid padding">
+            <div class="row text-center padding">
+                <div class="col-12">
+                    <h2>Redes Sociais</h2>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
     <!--Rodape-->
     <footer>
         <div class="container-fluid padding">
@@ -56,29 +77,21 @@
                     <p>(31) 9 9999-9999</p>
                     <p>email@hotmail.com</p>
                     <p>Av. Nepholus 784, Jardim Miragem, Contagem</p>
-                    <p>19567-456</p>
+                    <p>CEP: 19567-456</p>
                 </div>
                 <div class="col-md-4">
                     <hr class="light">
                     <h5>Principais Temas</h5>
                     <hr class="light">
-                    <p><a href="#">Renda fixa</a></p>
-                    <p><a href="#">Ações</a></p>
-                    <p><a href="#">Calculadora</a></p>
-                    <p><a href="#">CDI</a></p>
+                    <p><a href="notices.html">Renda fixa</a></p>
+                    <p><a href="notices.html">Ações</a></p>
+                    <p><a href="calculator.html">Calculadora</a></p>
+                    <p><a href="notices.html">CDI</a></p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 assine">
                     <h5>Assine e Receba Notícias</h5>
-                    <div class="form">
-                        <input type="text" name="email" autocomplete="off" required>
-                        <label for="email" class="label-email" >
-                            <span class="content-name">Email</span>
-                        </label>
-                    </div>
-                    <hr class="light">
-                    <div class="redes-sociais">
-                        Redes Sociais
-                        
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                     </div>
                 </div>
                 <div class="col-12">
