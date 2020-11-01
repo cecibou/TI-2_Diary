@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie-edge">
-    <title>Calculadora</title>
+    <title>Conversor</title>
     <script src="scripts/app.js"></script>
     <link rel="shortcut icon" href="assets/diary.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -13,7 +13,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/stylecalculator.css">
+    <link rel="stylesheet" href="styles/styleconversor.css">
 </head>
 <body>
     <!--NavBar-->
@@ -47,7 +47,17 @@
         </nav>
     </header>
     <!--Aviso-->
-    <h1 class="text-center">Em Desenvolvimento</h1>
+    <section class="calculator-moedas">
+        <div class="container col-12">
+            <div class="col-12 header-moedas">
+                <h2>Conversor de moedas</h2>
+            </div>
+            <div class="date"></div>
+            <ul class="moedas"></ul>
+            <button class="add-moedas-btn"><i class="fas fa-long-arrow-alt-left"></i>Adicionar moeda</button>
+            <ul class="add-moedas-list"></ul>
+        </div>
+    </section>
     <!--Redes Sociais-->
     <section class="redes-sociais">
         <div class="container-fluid padding">
@@ -106,6 +116,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="./scripts/investmentCalculator.js"></script>
+    <script src="./scripts/conversor.js"></script>
 </body>
 </html>
