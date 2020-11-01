@@ -1,6 +1,6 @@
 <?php
    
-    require 'assets/vendor/autoload.php';
+    require 'vendor/autoload.php';
 
    
     $email = new \SendGrid\Mail\Mail();
