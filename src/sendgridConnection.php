@@ -24,7 +24,7 @@ default:
 $email->addContent("text/html", "<p>Caro(a) {$_POST['nome']},<br>Sua mensagem foi recebida,porem foi enviada sem assunto.<br>Assim,talvez demore um pouco mais para responde-la.<br>Sem mais,<br>Equipe Project Diary</p>");
 break;
 }
-$sendgrid = new \SendGrid('***REMOVED***');
+$sendgrid = new \SendGrid('');
 try {
     $response = $sendgrid->send($email);
     print $response->statusCode() . "\n";
