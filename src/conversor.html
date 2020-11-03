@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>Conversor</title>
+    <script src="scripts/app.js"></script>
+    <link rel="shortcut icon" href="assets/diary.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styleconversor.css">
+</head>
+<body>
+    <!--NavBar-->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="investments.html" class="nav-link">Investimentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html" class="nav-link">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="aboutus.html" class="nav-link">Quem somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacts.html" class="nav-link">Contatos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Aviso-->
+    <section class="calculator-moedas">
+        <div class="container col-12">
+            <div class="col-12 header-moedas">
+                <h2>Conversor de moedas</h2>
+            </div>
+            <div class="date"></div>
+            <ul class="moedas"></ul>
+            <button class="add-moedas-btn"><i class="fas fa-long-arrow-alt-left"></i>Adicionar moeda</button>
+            <ul class="add-moedas-list"></ul>
+        </div>
+    </section>
+    <!--Redes Sociais-->
+    <section class="redes-sociais">
+        <div class="container-fluid padding">
+            <div class="row text-center padding">
+                <div class="col-12">
+                    <h2>Redes Sociais</h2>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Rodape-->
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img width="150px" height="150px" src="assets/diary.png" alt="">
+                    <hr class="light">
+                    <p>(31) 9 9999-9999</p>
+                    <p>email@hotmail.com</p>
+                    <p>Av. Nepholus 784, Jardim Miragem, Contagem</p>
+                    <p>CEP: 19567-456</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Principais Temas</h5>
+                    <hr class="light">
+                    <p><a href="notices.html">Renda fixa</a></p>
+                    <p><a href="notices.html">Ações</a></p>
+                    <p><a href="calculator.html">Calculadora</a></p>
+                    <p><a href="notices.html">CDI</a></p>
+                </div>
+                <div class="col-md-4 assine">
+                    <h5>Assine e Receba Notícias</h5>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr class="light-100">
+                    <h5>&copy; Developer by Diary Team</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="./scripts/conversor.js"></script>
+</body>
+</html>
