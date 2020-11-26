@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\docs",
     "\\docs\\images"
   ],
   "SelectedNode": "\\docs\\6-Implementação.md",
+=======
+    ""
+  ],
+>>>>>>> feature-release3
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,21 @@
     <script src="scripts/app.js"></script>
     <link rel="shortcut icon" href="assets/diary.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/stylecalculator.css">
 </head>
+
 <body>
     <!--NavBar-->
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container-fluid">
-                <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png" alt=""></a>
+                <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png"
+                        alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,8 +49,118 @@
             </div>
         </nav>
     </header>
-    <!--Aviso-->
-    <h1 class="text-center">Em Desenvolvimento</h1>
+
+    <!--Calculadora-->
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+            <h1>Calculadora</h1>
+            <div id="calculadora" class="card">
+                <div class="card-header">
+                    <p id="display" class="m-1">0</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <button id="bt-7" type="button" class="btn btn-light btn-block button-text">
+                                7
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-8" type="button" class="btn btn-light btn-block button-text">
+                                8
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-9" type="button" class="btn btn-light btn-block button-text">
+                                9
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-divide" type="button" class="btn btn-warning btn-block button-text">
+                                <i class="fas fa-divide"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button id="bt-4" type="button" class="btn btn-light btn-block button-text">
+                                4
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-5" type="button" class="btn btn-light btn-block button-text">
+                                5
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-6" type="button" class="btn btn-light btn-block button-text">
+                                6
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-times" type="button" class="btn btn-warning btn-block button-text">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button id="bt-1" type="button" class="btn btn-light btn-block button-text">
+                                1
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-2" type="button" class="btn btn-light btn-block button-text">
+                                2
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-3" type="button" class="btn btn-light btn-block button-text">
+                                3
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-minus" type="button" class="btn btn-warning btn-block button-text">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="bt-0" type="button" class="btn btn-light btn-block button-text">
+                                0
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-comma" type="button" class="btn btn-light btn-block button-text">
+                                ,
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-plus" type="button" class="btn btn-warning btn-block button-text">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col offset-6">
+                            <button id="bt-ac" type="button" class="btn btn-secondary btn-block button-text">
+                                AC
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="bt-equals" type="button" class="btn btn-warning btn-block button-text">
+                                <i class="fa fa-equals"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--Redes Sociais-->
     <section class="redes-sociais">
         <div class="container-fluid padding">
@@ -90,7 +203,8 @@
                 <div class="col-md-4 assine">
                     <h5>Assine e Receba Notícias</h5>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
                     </div>
                 </div>
                 <div class="col-12">
@@ -100,12 +214,19 @@
             </div>
         </div>
     </footer>
-    
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="./scripts/investmentCalculator.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="scripts/calculator.js"></script>
 </body>
+
 </html>
