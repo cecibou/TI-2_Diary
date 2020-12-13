@@ -21,7 +21,7 @@ function Montarnoticias (){
         let codigoHTML = '';
         
         //Montar os cards
-        for ( i = 4; i < 12; i++) {
+        for ( i = 4; i < 10; i++) {
         
             let titulo  = data.modules[1].stories[i].title;
             let imagem  = data.modules[1].stories[i].thumbnailImage;

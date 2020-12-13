@@ -20,14 +20,14 @@ const currencies = [
     abbreviation: "USD",
     symbol: "\u0024",
     flagURL: "http://www.geonames.org/flags/l/us.gif",
-    rate: 0.1872
+    rate: 0.1970
     },
     {
     name: "Euro",
     abbreviation: "EUR",
     symbol: "\u20AC",
     flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
-    rate: 0.1493
+    rate: 0.16272
     },
     {
     name: "Iene Japonês",
@@ -41,7 +41,7 @@ const currencies = [
     abbreviation: "GBP",
     symbol: "\u00A3",
     flagURL: "http://www.geonames.org/flags/l/uk.gif",
-    rate: 0.1344
+    rate: 0.1492
     },
     {
     name: "Dólar Australiano",
