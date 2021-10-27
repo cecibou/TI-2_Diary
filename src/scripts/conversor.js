@@ -20,14 +20,14 @@ const currencies = [
     abbreviation: "USD",
     symbol: "\u0024",
     flagURL: "http://www.geonames.org/flags/l/us.gif",
-    rate: 0.1737
+    rate: 0.1970
     },
     {
     name: "Euro",
     abbreviation: "EUR",
     symbol: "\u20AC",
     flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
-    rate: 0.1493
+    rate: 0.16272
     },
     {
     name: "Iene Japonês",
@@ -41,7 +41,7 @@ const currencies = [
     abbreviation: "GBP",
     symbol: "\u00A3",
     flagURL: "http://www.geonames.org/flags/l/uk.gif",
-    rate: 0.1344
+    rate: 0.1492
     },
     {
     name: "Dólar Australiano",
@@ -367,6 +367,45 @@ function newCurrenciesListItem (currency) {
     </li>`
     );
 }
+
+/*
+var saida = [];
+
+fetch("https://bloomberg-market-and-financial-news.p.rapidapi.com/market/get-cross-currencies?id=aed%252Caud%252Cbrl%252Ccad%252Cchf%252Ccnh%252Ccny%252Ccop%252Cczk%252Cdkk%252Ceur%252Cgbp%252Chkd%252Chuf%252Cidr%252Cils%252Cinr%252Cjpy%252Ckrw%252Cmxn%252Cmyr%252Cnok%252Cnzd%252Cphp%252Cpln%252Crub%252Csek%252Csgd%252Cthb%252Ctry%252Ctwd%252Cusd%252Czar", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "bloomberg-market-and-financial-news.p.rapidapi.com",
+		"x-rapidapi-key": "840e6cb406msh2bc2c336eeae8e6p1b4caajsn66fc0674b978"
+	}
+})
+.then(function (response) {
+    return response.json();
+})
+.then(function (data) {
+    saida = data.result;
+    console.log(saida);
+    currencies[1].rate = saida["usdbrl:cur"].last;
+    console.log(currencies[1].rate);
+
+    for() 
+
+        cur =    {
+            name: saida.catch....,
+            abbreviation: "BRL",
+            symbol: "\u0052\u0024",
+            flagURL: "http://www.geonames.org/flags/l/br.gif",
+            rate: 1
+        };
+
+        currencies.push(cur);
+
+    atualizaTela ()
+})
+.catch(err => {
+	console.log(err);
+});
+*/
+
 
 populateAddCurrencyList();
 populateCurrencyList();

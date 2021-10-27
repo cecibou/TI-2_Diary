@@ -87,36 +87,36 @@ navbar {
   margin-bottom: 1rem;
 }
 
-.fa-code {
-  color: #e54d26;
+.fa-blind {
+  color: #f08640;
 }
 
-.fa-bold {
+.fa-calculator {
   color: #563d7c;
 }
 
-.fa-apple {
-  color: #000;
+.fa-dollar-sign {
+  color: rgb(96, 200, 55);
 }
 
-.fa-angular {
-  color: #c3002f;
+.fa-bolt {
+  color: #f3f63c;
 }
 
-.fa-asymmetrik {
+.fa-chart-bar {
   color: #be1e2d;
 }
 
-.fa-aws {
+.fa-btc {
   color: #ec912d;
 }
 
-.fa-code,
-.fa-bold,
-.fa-apple,
-.fa-angular,
-.fa-asymmetrik,
-.fa-aws {
+.fa-blind,
+.fa-calculator,
+.fa-dollar-sign,
+.fa-bolt,
+.fa-chart-bar,
+.fa-btc {
   font-size: 4em;
   margin: 1rem;
 }
@@ -185,7 +185,7 @@ navbar {
 }
 
 .redes-sociais .fa-instagram {
-  color: #517fa4;
+  color: #e1306C;
 }
 
 .redes-sociais .fa-twitter {
@@ -214,7 +214,7 @@ navbar {
 }
 /*Imagem Fixa*/
 .imagem #fixed {
-  background-image: url("/src/assets/imagem1.jpg");
+  background-image: url("https://conteudo.imguol.com.br/c/noticias/f7/2018/09/24/investimento-investimentos-lucro-lucros-renda-fixa-renda-variavel-financas-pessoais-poupanca-previdencia-privada-aposentadora-dinheiro-acoes-bolsa-de-valores-1537801160753_v2_1920x1272.jpg");
   height: 400px;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -50,44 +50,15 @@
     </header>
     <!--Aviso-->
     <section class="agenda padding">
-        <div class="container-fluid padding">
+        <div class="container padding">
             <div class="row padding text-center">
                 <div class="col-12 agenda-content">
-                    <h2 class="col-12">Negociações</h2>
-    
-                    <form class="form" onsubmit="negociacaoController.adiciona(event)">
-                    
-                        <div class="form-group">
-                            <label for="data">Data</label>
-                            <input type="date" id="data" class="form-control" required autofocus/>        
-                        </div>    
-                        
-                        <div class="form-group">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" min="1" step="1" id="quantidade" class="form-control" value="1" required/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="valor">Valor</label>
-                            <input id="valor" type="number" class="form-control"  min="0.01" step="0.01" value="0.0" required />
-                        </div>
-                        <div class='col-12'>
-                            <button class="btn btn-primary" type="submit">Incluir</button>
-                        </div>
-                     </form>
-                
-                <div class="row text-center">
-                    <div class="col-12">
-                        <button class="btn btn-primary importar" type="button">
-                            Importar Negociações
-                        </button>
+                    <h1><span class="title">Diary</span>List</h1>
+                    <div class="inputDiv">
+                        <input type="text" class="input" placeholder="Anote algo...">
+                        <button class="add"><i class="fas fa-plus"></i></button>
                     </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="button">
-                            Apagar
-                        </button>
-                    </div>
-                </div>
+                    <div class="container"></div>
                 </div>
             </div>
         </div>
@@ -100,12 +71,12 @@
                     <h2>Redes Sociais</h2>
                 </div>
                 <div class="col-12 social padding">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#"><i class="fab fa-twitch"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://plus.google.com/" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="https://www.twitch.tv/" target="_blank"><i class="fab fa-twitch"></i></a>
                 </div>
             </div>
         </div>
@@ -150,10 +121,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="scripts/js/app/models/Negociacao.js"></script>
-    <script src="scripts/js/app/controllers/NegociacaoController.js"></script>
-    <script src="scripts/js/app/helpers/DateHelper.js"></script>
-    <script src="scripts/js/app/models/ListaNegociacoes.js"></script>
+    <script src='scripts/main.js'></script>
     <script>
         let negociacaoController = new NegociacaoController();
         negociacaoController._limpaFormulario();
