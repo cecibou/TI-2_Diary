@@ -1,32 +1,21 @@
 package app;
 
-import static spark.Spark.*;
+import service.NoticiaService;
+import spark.Filter;
 
-import dao.DAO;
+import static spark.Spark.*;
 
 public class Aplicacao {
 	
-	//private static ProdutoService produtoService = new ProdutoService();
+	private static NoticiaService noticiaService = new NoticiaService();
 	
-    public static void main(String[] args) {
-    	
-    		DAO conexao = new DAO();
-    		
-    		conexao.conectar();
-    		
-    		System.out.println("Hello World!");
-    	/*
-        port(6789);
+	public static void main(String[] args) throws Exception{
+		after((Filter) (request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET");
+        });
 
-        post("/produto", (request, response) -> produtoService.add(request, response));
-
-        get("/produto/:id", (request, response) -> produtoService.get(request, response));
-
-        get("/produto/update/:id", (request, response) -> produtoService.update(request, response));
-
-        get("/produto/delete/:id", (request, response) -> produtoService.remove(request, response));
-
-        get("/produto", (request, response) -> produtoService.getAll(request, response));
-               */
+		//pegar noticias do banco de dados e mostrar no site
+		get("/news/:perfil", (request, response) -> noticiaService.getNews(request, response));
     }
 }

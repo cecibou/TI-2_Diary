@@ -1,117 +1,152 @@
-package com.ti2cc;
+package service;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+import com.google.gson.Gson;
+
+import dao.DAONoticia;
+import model.ArticleDTO;
+import model.NewsDTO;
 import spark.Request;
 import spark.Response;
 
-
-public class ProdutoService {
-
-	private DAO produtoDAO;
-
-	public ProdutoService() {
-		produtoDAO = new DAO();
-		produtoDAO.conectar();
-	} 
-
-	public Object add(Request request, Response response) {
-		Produto[] usuarios = produtoDAO.getUsuarios();
-		String descricao = request.queryParams("descricao");
-		float preco = Float.parseFloat(request.queryParams("preco"));
-		int quantidade = Integer.parseInt(request.queryParams("quantidade"));
-		LocalDateTime dataFabricacao = LocalDateTime.parse(request.queryParams("dataFabricacao"));
-		LocalDate dataValidade = LocalDate.parse(request.queryParams("dataValidade"));
-		
-    	int maiorCodigo = 0;
-    	maiorCodigo = usuarios[0].getId();
-    	for(int i = 1; i < usuarios.length; i++) {
-    		if(usuarios[i].getId() > maiorCodigo)
-    		{
-    			maiorCodigo = usuarios[i].getId();
-    		}
-		}//fim for
-		int id = maiorCodigo + 1;
-
-		Produto produto = new Produto(id, descricao, preco, quantidade, dataFabricacao, dataValidade);
-
-		produtoDAO.inserirUsuario(produto);
-
-		response.status(201); // 201 Created
-		return id;
+public class NoticiaService {
+	private DAONoticia noticiaDAO;
+	public int numConservador;
+	public int numAgressivo;
+	public int numModerado;
+	public static String endPoint = "https://newsapi.org/v2/top-headlines?country=br&category=business&q=";
+	public static String apiKey = "&apiKey=63358a9c1d5b4fe88ac22d386a5a54ad";
+	
+	public NoticiaService() {
+		noticiaDAO = new DAONoticia();
+		noticiaDAO.conectar();
+		numConservador = 0;
+		numAgressivo = 0;
+		numModerado = 0;
 	}
-
-	public Object get(Request request, Response response) {
-		int id = Integer.parseInt(request.params(":id"));
-		
-		Produto produto = produtoDAO.getUsuario(id);
-		
-		if (produto != null) {
-    	    response.header("Content-Type", "application/xml");
-    	    response.header("Content-Encoding", "UTF-8");
-
-            return "<produto>\n" + 
-            		"\t<id>" + produto.getId() + "</id>\n" +
-            		"\t<descricao>" + produto.getDescricao() + "</descricao>\n" +
-            		"\t<preco>" + produto.getPreco() + "</preco>\n" +
-            		"\t<quantidade>" + produto.getQuant() + "</quantidade>\n" +
-            		"\t<fabricacao>" + produto.getDataFabricacao() + "</fabricacao>\n" +
-            		"\t<validade>" + produto.getDataValidade() + "</validade>\n" +
-            		"</produto>\n";
-        } else {
-            response.status(404); // 404 Not found
-            return "Produto " + id + " não encontrado.";
-        }
-
+	
+	public void conexaoAPI(char classificacao, String url) {
+		var client = HttpClient.newHttpClient();
+		var request = HttpRequest.newBuilder(URI.create(url)).build();
+	        
+        try{
+	        var responseFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+	        var response = responseFuture.get();
+	        System.out.println(response.body());
+	        NewsDTO obj = new Gson().fromJson(response.body(), NewsDTO.class);
+	        if(classificacao == '1') {
+		        for (ArticleDTO art : obj.articles) {
+		        	if(numConservador < 10) {
+		        		this.save(art.title, art.url, art.urlToImage, '1', art.publishedAt);
+		        		numConservador++;
+		        	}
+		        }
+	        } else if (classificacao == '2') {
+	        	for (ArticleDTO art : obj.articles) {
+		        	if(numAgressivo < 10) {
+		        		this.save(art.title, art.url, art.urlToImage, '2', art.publishedAt);
+		        		numAgressivo++;
+		        	}
+		        }
+	        } else if(classificacao == '3') {
+	        	for (ArticleDTO art : obj.articles) {
+		        	if(numModerado < 10) {
+		        		this.save(art.title, art.url, art.urlToImage, '3', art.publishedAt);
+		        		numModerado++;
+		        	}
+		        }
+	        }
+        }catch(Exception e){
+	            e.printStackTrace();
+	    }
 	}
+	
+	public void getNewsAPI() {
+		String[] qConservador = {"selic", "cdi", "fixa", "finanças", "taxa", "guardar", "economia"};
+		String[] qAgressivo = {"b3", "bovespa", "cripto", "investidor", "cotações", "ações"};
 
-	public Object update(Request request, Response response) {
-        int id = Integer.parseInt(request.params(":id"));
-        
-        Produto produto = produtoDAO.getUsuario(id);
-
-        if (produto != null) {
-        	produto.setDescricao(request.queryParams("descricao"));
-        	produto.setPreco(Float.parseFloat(request.queryParams("preco")));
-        	produto.setQuant(Integer.parseInt(request.queryParams("quantidade")));
-        	produto.setDataFabricacao(LocalDateTime.parse(request.queryParams("dataFabricacao")));
-        	produto.setDataValidade(LocalDate.parse(request.queryParams("dataValidade")));
-
-        	produtoDAO.atualizarUsuario(produto);
-        	
-            return id;
-        } else {
-            response.status(404); // 404 Not found
-            return "Produto não encontrado.";
-        }
-
+		for(int i = 0; i < qConservador.length; i++) {
+			if(numConservador < 10) {
+				this.conexaoAPI('1', (endPoint + qConservador[i] + apiKey));
+			} else {
+				i = qConservador.length;
+			}
+		}
+		
+		for(int i = 0; i < qAgressivo.length; i++) {
+			if(numConservador < 10) {
+				this.conexaoAPI('2', (endPoint + qAgressivo[i] + apiKey));
+			} else {
+				i = qAgressivo.length;
+			}
+		}
+		
+		for(int i = 0; i < qAgressivo.length; i++) {
+			if(numModerado < 5) {
+				this.conexaoAPI('3', (endPoint + qAgressivo[i] + apiKey));
+			} else {
+				i = qAgressivo.length;
+			}
+		}
+		
+		for(int i = 0; i < qConservador.length; i++) {
+			if(numModerado < 10) {
+				this.conexaoAPI('3', (endPoint + qConservador[i] + apiKey));
+			} else {
+				i = qConservador.length;
+			}
+		}
+	}
+	
+	public void save(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) {
+		this.noticiaDAO.inserirNoticia(titulo, url, urlToImage, classificacao, dataDePublicacao);
+	}
+	
+	public Object getNews(Request request, Response response) {
+		var perfil = request.params("perfil");
+		Gson gson = new Gson();
+		response.header("Content-Encoding", "UTF-8");
+	    response.type("application/json");
+		
+		switch(perfil) {
+			case "conservador":
+	    	    response.status(200);
+	    	    var noticiasAtuais = noticiaDAO.getNoticiasPorData('1', LocalDate.now());
+	    	    if(noticiasAtuais == null) {
+	    	    	this.getNewsAPI();
+	    	    } 
+				return gson.toJson(noticiaDAO.getNoticiasPerfil('1'));
+			case "agressivo":
+				response.status(200);
+				noticiasAtuais = noticiaDAO.getNoticiasPorData('2', LocalDate.now());
+	    	    if(noticiasAtuais == null) {
+	    	    	this.getNewsAPI();
+	    	    } 
+				return gson.toJson(noticiaDAO.getNoticiasPerfil('2'));
+			case "moderado":
+				response.status(200);
+				noticiasAtuais = noticiaDAO.getNoticiasPorData('3', LocalDate.now());
+	    	    if(noticiasAtuais == null) {
+	    	    	this.getNewsAPI();
+	    	    } 
+				return gson.toJson(noticiaDAO.getNoticiasPerfil('3'));
+			default:
+				response.status(404);
+				return gson.toJson("ERRO: Perfil inválido!");
+		}
 	}
 
 	public Object remove(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
 
-            produtoDAO.excluirUsuario(id);
+		noticiaDAO.excluirNoticia(id);
 
-            response.status(200); // success
-        	return id;
-	}
-
-	public Object getAll(Request request, Response response) {
-		StringBuffer returnValue = new StringBuffer("<produtos type=\"array\">");
-		for (Produto produto : produtoDAO.getUsuarios()) {
-			returnValue.append("\n<produto>\n" + 
-            		"\t<id>" + produto.getId() + "</id>\n" +
-            		"\t<descricao>" + produto.getDescricao() + "</descricao>\n" +
-            		"\t<preco>" + produto.getPreco() + "</preco>\n" +
-            		"\t<quantidade>" + produto.getQuant() + "</quantidade>\n" +
-            		"\t<fabricacao>" + produto.getDataFabricacao() + "</fabricacao>\n" +
-            		"\t<validade>" + produto.getDataValidade() + "</validade>\n" +
-            		"</produto>\n");
-		}
-		returnValue.append("</produtos>");
-	    response.header("Content-Type", "application/xml");
-	    response.header("Content-Encoding", "UTF-8");
-		return returnValue.toString();
-	}
+		response.status(200); // success
+		return id;
+	}//fim remove()
 }

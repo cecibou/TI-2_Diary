@@ -1,0 +1,11 @@
+/*
+    CSS das noticias que serao recomendadas pelo Chatbot, esta no recomendacoes.html
+*/
+#noticias {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: justify;
+    justify-content: space-between;
+    padding: 40px;
+}

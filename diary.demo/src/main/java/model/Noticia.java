@@ -1,37 +1,26 @@
-package com.ti2cc;
+package model;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.*;
 
-public class Produto implements Serializable {
-	private static final long serialVersionUID = 1L;
-	public static final String DESCRICAO_PADRAO = "Novo Produto";
-	public static final int MAX_ESTOQUE = 1000;
-	private int id;
-	private String descricao;
-	private float preco;
-	private int quantidade;
-	private LocalDateTime dataFabricacao;	
-	private LocalDate dataValidade;
+public class Noticia {
+	private Integer id = null;
+	private String titulo;
+	private String url;
+	private String urlToImage;
+	private char classificacao;
+	private Date dataDePublicacao;	
 	
-	
-	public Produto() {
-		id = -1;
-		descricao = DESCRICAO_PADRAO;
-		preco = 0.01F;
-		quantidade = 0;
-		dataFabricacao = LocalDateTime.now();
-		dataValidade = LocalDate.now().plusMonths(6); // o default é uma validade de 6 meses.
+	public Noticia() {
+		this(0, null, null, null, '0', null);
 	}
-
-	public Produto(int id, String descricao, float preco, int quantidade, LocalDateTime fabricacao, LocalDate v) {
-		setId(id);
-		setDescricao(descricao);
-		setPreco(preco);
-		setQuant(quantidade);
-		setDataFabricacao(fabricacao);
-		setDataValidade(v);
+	
+	public Noticia(Integer id, String titulo, String url, String urlToImage, char classificacao, Date dataDePublicacao) {
+		setId(id);			
+		setTitulo(titulo);
+		setURL(url);
+		setURLToImage(urlToImage);
+		setClassificacao(classificacao);
+		setDataDePublicacao(dataDePublicacao);
 	}		
 	
 	public int getId() {
@@ -42,73 +31,49 @@ public class Produto implements Serializable {
 		this.id = id;
 	}
 
-	
-	public String getDescricao() {
-		return descricao;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setDescricao(String descricao) {
-		if (descricao.length() >= 3)
-			this.descricao = descricao;
+	public void setTitulo(String titulo) {	
+			this.titulo = titulo;
 	}
 
-	public float getPreco() {
-		return preco;
+	public String getURL() {
+		return url;
 	}
 
-	public void setPreco(float preco) {
-		if (preco > 0)
-			this.preco = preco;
-	}
-
-	public int getQuant() {
-		return quantidade;
+	public void setURL(String url) {
+			this.url = url;
 	}
 	
-	public void setQuant(int quantidade) {
-		if (quantidade >= 0 && quantidade <= MAX_ESTOQUE)
-			this.quantidade = quantidade;
+	public String getURLToImage() {
+		return urlToImage;
+	}
+
+	public void setURLToImage(String urlToImage) {
+			this.urlToImage = urlToImage;
+	}
+
+	public char getClassificacao() {
+		return classificacao;
 	}
 	
-	public LocalDate getDataValidade() {
-		return dataValidade;
+	public void setClassificacao(char classificacao) {
+		this.classificacao = classificacao;
+	}
+	
+	public Date getDataDePublicacao() {
+		return dataDePublicacao;
 	}
 
-	public LocalDateTime getDataFabricacao() {
-		return dataFabricacao;
+	public void setDataDePublicacao(Date dataDePublicacao) {
+		this.dataDePublicacao = dataDePublicacao;
 	}
 
-	public void setDataFabricacao(LocalDateTime dataFabricacao) {
-		// Pega a Data Atual
-		LocalDateTime agora = LocalDateTime.now();
-		// Garante que a data de fabricação não pode ser futura
-		if (agora.compareTo(dataFabricacao) >= 0)
-			this.dataFabricacao = dataFabricacao;
-	}
-
-	public void setDataValidade(LocalDate dataValidade) {
-		// a data de fabricação deve ser anterior é data de validade.
-		if (getDataFabricacao().isBefore(dataValidade.atStartOfDay()))
-			this.dataValidade = dataValidade;
-	}
-
-	public boolean emValidade() {
-		return LocalDateTime.now().isBefore(this.getDataValidade().atTime(23, 59));
-	}
-
-
-	/**
-	 * Método sobreposto da classe Object. É executado quando um objeto precisa
-	 * ser exibido na forma de String.
-	 */
-	@Override
 	public String toString() {
-		return "Produto: " + descricao + "   Preço: R$" + preco + "   Quant.: " + quantidade + "   Fabricação: "
-				+ dataFabricacao  + "   Data de Validade: " + dataValidade;
+		return "ID Noticia: " + id + "   Titulo: " + titulo + "   URL: " + url + "   URLToImage: "
+				 + urlToImage + "   Classificacao: " + classificacao  + "   Data de Publicacao: " 
+				 + dataDePublicacao;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		return (this.getId() == ((Produto) obj).getId());
-	}	
 }
