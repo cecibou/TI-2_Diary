@@ -3,7 +3,7 @@ package model;
 import java.util.*;
 
 public class Noticia {
-	private Integer id = null;
+	private Integer id;
 	private String titulo;
 	private String url;
 	private String urlToImage;
