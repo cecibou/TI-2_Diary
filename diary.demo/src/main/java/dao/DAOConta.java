@@ -60,4 +60,20 @@ public class DAOConta {
 		}
 		return status;
 	}
+	
+	public boolean atualizarConta(int id, String estadoCivil, String personalidade, String dataDeNascimento) {
+		boolean status = false;
+		try {  
+			Statement st = conexao.createStatement();
+			String sql = "UPDATE conta SET estadocivil = '" + estadoCivil + "', datadenascimento = '" +
+					   dataDeNascimento + "', personalidade = '" + personalidade + "'"
+					   + " WHERE id LIKE = " + id;
+			st.executeUpdate(sql);
+			st.close();
+			status = true;
+		} catch (SQLException u) {  
+			throw new RuntimeException(u);
+		}
+		return status;
+	}
 }

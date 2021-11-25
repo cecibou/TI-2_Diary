@@ -19,5 +19,6 @@ public class Aplicacao {
 		//pegar noticias do banco de dados e mostrar no site
 		get("/news/:perfil", (request, response) -> noticiaService.getNews(request, response));
 		post("/contaSave", (request, response) -> ContaService.saveAPI(request, response));
+		//put("/chatbot/:id");
     }
 }
