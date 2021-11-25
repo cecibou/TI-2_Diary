@@ -9,19 +9,12 @@ import java.time.LocalDate;
 import com.google.gson.Gson;
 
 import dao.DAOConta;
-import model.ArticleDTO;
 import model.ContaDTO;
-import model.NewsDTO;
 import spark.Request;
 import spark.Response;
 
 public class ContaService {
 	private DAOConta contaDAO;
-	public int numConservador;
-	public int numAgressivo;
-	public int numModerado;
-	public static String endPoint = "https://newsapi.org/v2/top-headlines?country=br&category=business&q=";
-	public static String apiKey = "&apiKey=63358a9c1d5b4fe88ac22d386a5a54ad";
 	
 	public ContaService() {
 		contaDAO = new DAOConta();
@@ -31,6 +24,7 @@ public class ContaService {
 	public void save(String email, String nome, String senha) { 
 		this.contaDAO.inserirConta(email, nome, senha);
 	}
+	
 	public Object saveAPI(Request request, Response response) {
 		Gson gson = new Gson();
 		
@@ -50,5 +44,16 @@ public class ContaService {
 		
 		return gson.toJson(new ContaDTO(25,email,nome,senha));
 		
+	}
+	
+	public void inserirDadosChatbot(Request request, Response response) {
+		var id = request.params("id");
+		var body = request.body();
+		Gson gson = new Gson();
+		response.header("Content-Encoding", "UTF-8");
+	    response.type("application/json");
+	    
+	    response.status(200);
+	    	
 	}
 }
