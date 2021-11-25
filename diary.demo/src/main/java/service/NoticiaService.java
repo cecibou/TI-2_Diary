@@ -121,7 +121,7 @@ public class NoticiaService {
 	    	    	this.getNewsAPI();
 	    	    } 
 				return gson.toJson(noticiaDAO.getNoticiasPerfil('1'));
-			case "agressivo":
+			case "liberal":
 				response.status(200);
 				noticiasAtuais = noticiaDAO.getNoticiasPorData('2', LocalDate.now());
 	    	    if(noticiasAtuais == null) {
