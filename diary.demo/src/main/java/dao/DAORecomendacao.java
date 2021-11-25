@@ -1,9 +1,6 @@
 package dao;
 
 import java.sql.*;
-import java.time.LocalDate;
-
-import model.Noticia;
 
 public class DAORecomendacao {
 	private Connection conexao = null;

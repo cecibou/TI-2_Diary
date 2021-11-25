@@ -140,13 +140,4 @@ public class NoticiaService {
 				return gson.toJson("ERRO: Perfil inválido!");
 		}
 	}
-
-	public Object remove(Request request, Response response) {
-        int id = Integer.parseInt(request.params(":id"));
-
-		noticiaDAO.excluirNoticia(id);
-
-		response.status(200); // success
-		return id;
-	}//fim remove()
 }
