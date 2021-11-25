@@ -1,9 +1,6 @@
 package dao;
 
 import java.sql.*;
-import java.time.LocalDate;
-
-import model.Noticia;
 
 public class DAOConta {
 	private Connection conexao = null;
@@ -56,65 +53,6 @@ public class DAOConta {
 		try {  
 			Statement st = conexao.createStatement();
 			st.execute(sql);  
-			st.close();
-			status = true;
-		} catch (SQLException u) {  
-			throw new RuntimeException(u);
-		}
-		return status;
-	}
-	
-	public Noticia[] getNoticiasPerfil(char classificacao) {		
-		Noticia[] noticia = null;
-		
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' ORDER BY noticia.datadepublicacao DESC LIMIT 6 OFFSET 0");		
-			if(rs.next()){
-				rs.last();
-				noticia = new Noticia[rs.getRow()];
-				rs.beforeFirst();
-
-				for(int i = 0; rs.next(); i++) {
-					noticia[i] = new Noticia(rs.getInt("id"), rs.getString("titulo"), rs.getString("url"), 
-					rs.getString("urlToImage"), rs.getString("classificacao").charAt(0), rs.getDate("dataDePublicacao"));
-				}
-			}
-			st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return noticia;
-	}
-	
-	public Noticia[] getNoticiasPorData(char classificacao, LocalDate data) {		
-		Noticia[] noticia = null;
-		
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' AND noticia.datadepublicacao = '" + data.toString() + "'");		
-			if(rs.next()){
-				rs.last();
-				noticia = new Noticia[rs.getRow()];
-				rs.beforeFirst();
-
-				for(int i = 0; rs.next(); i++) {
-					noticia[i] = new Noticia(rs.getInt("id"), rs.getString("titulo"), rs.getString("url"), 
-					rs.getString("urlToImage"), rs.getString("classificacao").charAt(0), rs.getDate("dataDePublicacao"));
-				}
-			}
-			st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return noticia;
-	}
-	
-	public boolean excluirNoticia(int id) {
-		boolean status = false;
-		try {  
-			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM noticia WHERE id = " + id);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
