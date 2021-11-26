@@ -14,7 +14,7 @@ function MontarNoticias (){
     const settings = {
         "async": true,           //ser assincrono
         "crossDomain": true,     //pegar de outros dominios
-        "url": `http://localhost:4567/news/agressivo`,  //${perfil}
+        "url": `http://localhost:4567/news/conservador`,  //${perfil}
         "method": "GET"
     };
     
