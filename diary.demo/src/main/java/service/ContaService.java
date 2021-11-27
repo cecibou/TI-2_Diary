@@ -1,11 +1,11 @@
 package service;
 
 import com.google.gson.Gson;
-
 import dao.DAOConta;
 import model.ContaDTO;
 import spark.Request;
 import spark.Response;
+import spark.Session;
 
 public class ContaService {
 	private DAOConta contaDAO;
@@ -15,8 +15,9 @@ public class ContaService {
 		contaDAO.conectar();
 	}
 	
-	public void save(String email, String nome, String senha) { 
-		this.contaDAO.inserirConta(email, nome, senha);
+	public boolean save(String email, String nome, String senha) { 
+		 return this.contaDAO.inserirConta(email, nome, senha);
+		 
 	}
 	
 	public Object saveAPI(Request request, Response response) {
@@ -30,19 +31,79 @@ public class ContaService {
 		var nome = request.raw().getParameter("nome");
 		var senha = request.raw().getParameter("senha");
 		try {
-			this.save(email,nome,senha);
+			boolean status = this.save(email,nome,senha);
+			if(status) {
+			response.redirect("index.html");
+			}
+			
 		}
 		catch(Exception e) {
 			email= e.getMessage();
 		}
 		return gson.toJson(new ContaDTO(25,email,nome,senha));
 	}
+
+public boolean Load(String email, String senha) { 
+	 return this.contaDAO.checkUser(email, senha);
+	 
+}
+
+public Object Login(Request request, Response response) {
+	Gson gson = new Gson();
+	
+	response.status(200);
+	response.header("Content-Encoding", "UTF-8");
+    response.type("application/json");
+    
+	var email = request.raw().getParameter("email");
+	var senha = request.raw().getParameter("senha");
+	Session session = request.session();
+	
+	try {
+		boolean status = this.Load(email,senha);
+		if(status) {			
+		//boolean userAuth = session.attribute("userAuth");
+		session.attribute("userAuth", true);
+			response.redirect("index.html?" + email);
+		}else{
+			session.attribute("userAuth", false);
+			response.redirect("usuariosemcadastro.html");			
+		}
+		
+	}
+	catch(Exception e) {
+		email= e.getMessage();
+	}
+	return gson.toJson(new ContaDTO(25,email,senha));
+}
+
+public Object userAuth(Request request, Response response) {
+	Gson gson = new Gson();
+	
+	response.status(200);
+	response.header("Content-Encoding", "UTF-8");
+    response.type("application/json");
+    
+	Session session = request.session();
+	boolean status = false ;
+	
+	try {	
+		//session.attribute("userAuth", true);
+		 status = session.attribute("userAuth");
+		
+	}
+	catch(Exception e) {
+		status = false;
+	}
+	return gson.toJson("{userAuth:"+status+"}");
+}
 	
 	public String pegaAtributoText (String linha) {
 		String[] aux = linha.split("\"");
 		
 		return aux[3];
 	}
+	
 	
 	public String pegaAtributoData (String linha) {
 		String[] aux = linha.split("\"");
