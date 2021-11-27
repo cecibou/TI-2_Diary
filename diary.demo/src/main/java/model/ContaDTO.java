@@ -21,6 +21,11 @@ public class ContaDTO {
 		  this.nome = nome;
 		  this.senha = senha;
 	}
+	public ContaDTO(int id, String email, String senha) {
+		  this.id = id;
+		  this.email = email;
+		  this.senha = senha;
+	}
 	  
 	public ContaDTO(int id, String email, String nome, String senha, String estadoCivil, 
 					String personalidade, Date dataDeNascimento) {
