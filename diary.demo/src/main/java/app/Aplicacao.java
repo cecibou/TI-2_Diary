@@ -24,6 +24,7 @@ public class Aplicacao {
 		post("/contaSave", (request, response) -> contaService.saveAPI(request, response));
 		post("/contaLogin", (request, response) -> contaService.Login(request, response));
 		get("/userAuth", (request, response) -> contaService.userAuth(request, response));
+		get("/contaLocalStorage/:email", (request, response) -> contaService.Login(request, response));
 		put("/chatbot", (request, response) -> contaService.inserirDadosChatbot(request, response)); 
 	
     }

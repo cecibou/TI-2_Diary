@@ -1,5 +1,7 @@
 package service;
 
+import java.awt.event.WindowAdapter;
+
 import com.google.gson.Gson;
 import dao.DAOConta;
 import model.ContaDTO;
@@ -67,7 +69,7 @@ public Object Login(Request request, Response response) {
 			response.redirect("index.html?" + email);
 		}else{
 			session.attribute("userAuth", false);
-			response.redirect("usuariosemcadastro.html");			
+			response.redirect("login.html");
 		}
 		
 	}
