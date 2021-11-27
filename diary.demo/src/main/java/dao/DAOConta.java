@@ -22,11 +22,11 @@ public class DAOConta {
 			Class.forName(driverName);
 			conexao = DriverManager.getConnection(url, username, password);
 			status = (conexao == null);
-			System.out.println("Conexão efetuada com o postgres!");
+			System.out.println("ConexÃ£o efetuada com o postgres!");
 		} catch (ClassNotFoundException e) { 
-			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
+			System.err.println("ConexÃ£o NÃƒO efetuada com o postgres -- Driver nÃ£o encontrado -- " + e.getMessage());
 		} catch (SQLException e) {
-			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
+			System.err.println("ConexÃ£o NÃƒO efetuada com o postgres -- " + e.getMessage());
 		}
 		return status;
 	}
@@ -55,6 +55,24 @@ public class DAOConta {
 			st.execute(sql);  
 			st.close();
 			status = true;
+		} catch (SQLException u) {  
+			throw new RuntimeException(u);
+		}
+		return status;
+	}
+	
+	public boolean checkUser(String email, String senha) {
+		boolean status = false;
+		String sql= "SELECT count(*) FROM  public.conta WHERE ("
+				+ "email = '"+ email + "' AND "
+				+ "senha = '"+ senha +"')";
+		try {  
+			Statement st = conexao.createStatement();
+			ResultSet rs= st.executeQuery(sql); 
+			rs.next();
+			int resultadoLogin = rs.getInt(1);
+			status = resultadoLogin > 0;
+			st.close();
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
 		}
