@@ -7,16 +7,64 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	 crossorigin="anonymous">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
+    <!--NavBar-->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="investments.html" class="nav-link">Investimentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html" class="nav-link">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="bot.html" class="nav-link">Personalidade</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="recomendacoes.html" class="nav-link">Recomendações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="aboutus.html" class="nav-link">Quem somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacts.html" class="nav-link">Contatos</a>
+                        </li>
+			     <li class="nav-item">
+                            <a href="login.html" class="nav-link">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Login-->
 	<div id="login">
 		<h3 class="text-center text-white pt-5">Novo Usuário</h3>
 		<div class="container">
 			<div id="login-row" class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
-						<form id="login-form" class="form" method="post"  action="http://localhost:4567/contaLogin" onsubmit="loginUser()">
+						<form id="login-form" class="form" method="post" action="http://localhost:4567/contaLogin">
 							<h3 class="text-center text-info">Login</h3>
 
 							<div class="form-group">
@@ -30,7 +78,7 @@
                             </div>
 
                             <div class="form-group text-right">                                
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="entrar">
+                                <input type="submit" name="submit" onclick="loginID()" class="btn btn-info btn-md" value="Entrar">
                             </div>
                         </form>
                     </div>
@@ -82,8 +130,41 @@
     </div>
   </div>
 
+   <!--Rodape-->
+   <footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img width="150px" height="150px" src="assets/diary.png" alt="">
+                <hr class="light">
+                <p>(31) 9 9999-9999</p>
+                <p>email@hotmail.com</p>
+                <p>Av. Nepholus 784, Jardim Miragem, Contagem</p>
+                <p>CEP: 19567-456</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Principais Temas</h5>
+                <hr class="light">
+                <p><a href="notices.html">Renda fixa</a></p>
+                <p><a href="notices.html">Ações</a></p>
+                <p><a href="calculator.html">Calculadora</a></p>
+                <p><a href="notices.html">CDI</a></p>
+            </div>
+            <div class="col-md-4 assine">
+                <h5>Assine e Receba Notícias</h5>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+            </div>
+            <div class="col-12">
+                <hr class="light-100">
+                <h5>&copy; Developer by Diary Team</h5>
+            </div>
+        </div>
+    </div>
+</footer>
 
-       <script src="scripts/login.js"></script>
     <script>
         
         // Declara uma função para processar o formulário de login
@@ -95,13 +176,14 @@
                 var username = document.getElementById('username').value;
                 var password = document.getElementById('password').value;
 
+                console.log( username );
                 // Valida login e se estiver ok, redireciona para tela inicial da aplicação
                 resultadoLogin = loginUser (username, password);
                 if (resultadoLogin) {
                     window.location.href = 'index.html';
                 }
                 else { // Se login falhou, avisa ao usuário
-                    alert ('Usuário ou senha incorretos');
+                    window.alert('Usuário ou senha incorretos');
                 }
         }
 
@@ -137,7 +219,7 @@
         //document.getElementById ('btn_salvar').addEventListener ('click', salvaLogin);        
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="scripts/login.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
 </body>

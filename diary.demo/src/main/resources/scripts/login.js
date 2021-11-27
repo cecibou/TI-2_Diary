@@ -100,6 +100,23 @@ function logoutUser () {
     window.location = LOGIN_URL;
 }
 
+//Procura pelo id no banco de dados referente ao email e coloca no localstorage
+function loginID () {
+    var email = document.getElementById('email').value;
+
+    //pegar id do usuario logado do banco de dados
+    const settings = {
+        "async": true,           //ser assincrono
+        "crossDomain": true,     //pegar de outros dominios
+        "url": `http://localhost:4567/contaLocalStorage/${email}`,
+        "method": "GET"
+    };
+
+    $.ajax(settings).done(function (data) {
+        localStorage.setItem("id", data);
+    })
+}
+
 function addUser (nome, login, senha) {
     
     // Cria um objeto de usuario para o novo usuario 
@@ -119,4 +136,4 @@ function setUserPass () {
 
 
 // Inicializa as estruturas utilizadas pelo LoginApp
-initLoginApp ();
+//initLoginApp ();

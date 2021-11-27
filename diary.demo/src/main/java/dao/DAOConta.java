@@ -1,6 +1,13 @@
 package dao;
 
 import java.sql.*;
+import java.time.LocalDate;
+
+import com.google.gson.Gson;
+
+import model.ContaDTO;
+import spark.Request;
+import spark.Response;
 
 public class DAOConta {
 	private Connection conexao = null;
@@ -77,6 +84,24 @@ public class DAOConta {
 			throw new RuntimeException(u);
 		}
 		return status;
+	}
+	
+	public ContaDTO getIdUsuario(String email) {			
+		ContaDTO usuario = new ContaDTO();				
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE email LIKE '" + email + "'");			 
+			if(rs.next()){	 
+				
+				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		
+						rs.getString("senha"), rs.getString("estadoCivil"), rs.getString("personalidade"),
+						rs.getDate("dataDeNascimento"));	
+			}	 
+			st.close();		
+		} catch (Exception e) {			
+			System.err.println(e.getMessage());		
+		}		
+		return usuario;	
 	}
 	
 	public boolean atualizarConta(String email, String estadoCivil, String personalidade, String dataDeNascimento) {
