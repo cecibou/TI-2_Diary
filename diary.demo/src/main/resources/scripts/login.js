@@ -67,8 +67,12 @@ function initLoginApp () {
 
 
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
-function loginUser (login, senha) {
-    
+function loginUser ( event ) {
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#senha');
+    event.preventDefault();
+    console.log('::::::::::::::EVENT::::::::::::::: ', event)
+
     // Verifica todos os itens do banco de dados de usuarios 
     // para localizar o usuário informado no formulario de login
     for (var i = 0; i < db_usuarios.usuarios.length; i++) {
