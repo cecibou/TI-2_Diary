@@ -7,9 +7,51 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	 crossorigin="anonymous">
+     <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
+        <!--NavBar-->
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <a href="index.html" class="navbar-brand"><img width="120px" height="80px" src="assets/diary.png"
+                            alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a href="index.html" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="investments.html" class="nav-link">Investimentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="services.html" class="nav-link">Serviços</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="bot.html" class="nav-link">Personalidade</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="recomendacoes.html" class="nav-link">Recomendações</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="aboutus.html" class="nav-link">Quem somos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contacts.html" class="nav-link">Contatos</a>
+                            </li>
+                             <li class="nav-item">
+                                <a href="login.html" class="nav-link">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
 	<div id="login">
 		<h3 class="text-center text-white pt-5">Novo Usuário</h3>
 		<div class="container">
@@ -31,7 +73,7 @@
                             </div>
                         </form>
                     </div>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Novo usuario</button>
+                    <button type="button" class="btn btn-info" style="margin-bottom: 50px;" data-toggle="modal" data-target="#loginModal">Novo usuario</button>
                 </div>
             </div>
         </div>
@@ -133,6 +175,42 @@
         // Associar salvamento ao botao
         //document.getElementById ('btn_salvar').addEventListener ('click', salvaLogin);        
     </script>
+
+        <!--Rodape-->
+        <footer>
+            <div class="container-fluid padding">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <img width="150px" height="150px" src="assets/diary.png" alt="">
+                        <hr class="light">
+                        <p>(31) 9 9999-9999</p>
+                        <p>email@hotmail.com</p>
+                        <p>Av. Nepholus 784, Jardim Miragem, Contagem</p>
+                        <p>CEP: 19567-456</p>
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="light">
+                        <h5>Principais Temas</h5>
+                        <hr class="light">
+                        <p><a href="notices.html">Renda fixa</a></p>
+                        <p><a href="notices.html">Ações</a></p>
+                        <p><a href="calculator.html">Calculadora</a></p>
+                        <p><a href="notices.html">CDI</a></p>
+                    </div>
+                    <div class="col-md-4 assine">
+                        <h5>Assine e Receba Notícias</h5>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr class="light-100">
+                        <h5>&copy; Developer by Diary Team</h5>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
