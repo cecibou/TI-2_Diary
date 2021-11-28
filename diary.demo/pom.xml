@@ -3,14 +3,6 @@
   <groupId>com.ti2cc</groupId>
   <artifactId>diary.demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.heroku.sdk</groupId>
-        <artifactId>heroku-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
   <dependencies>
   	<dependency>
     	<groupId>postgresql</groupId>
@@ -33,11 +25,19 @@
     	<version>2.8.9</version>
 	</dependency>
   </dependencies>
+	
+<build>
+  <plugins>
+    <plugin>
+      <groupId>com.heroku.sdk</groupId>
+      <artifactId>heroku-maven-plugin</artifactId>
+      <version>3.0.4</version>
+      <configuration>
+        <appName>ti2diary</appName>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
 </project>
 
-<configuration>
-	<appName>ti2diary</appName>
-	<processTypes>
-     		<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
-  	</processTypes>	
-</configuration>
