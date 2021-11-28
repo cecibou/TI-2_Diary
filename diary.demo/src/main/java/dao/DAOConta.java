@@ -1,13 +1,7 @@
 package dao;
 
 import java.sql.*;
-import java.time.LocalDate;
-
-import com.google.gson.Gson;
-
 import model.ContaDTO;
-import spark.Request;
-import spark.Response;
 
 public class DAOConta {
 	private Connection conexao = null;
@@ -29,11 +23,11 @@ public class DAOConta {
 			Class.forName(driverName);
 			conexao = DriverManager.getConnection(url, username, password);
 			status = (conexao == null);
-			System.out.println("ConexÃ£o efetuada com o postgres!");
+			System.out.println("Conexão efetuada com o postgres!");
 		} catch (ClassNotFoundException e) { 
-			System.err.println("ConexÃ£o NÃƒO efetuada com o postgres -- Driver nÃ£o encontrado -- " + e.getMessage());
+			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
 		} catch (SQLException e) {
-			System.err.println("ConexÃ£o NÃƒO efetuada com o postgres -- " + e.getMessage());
+			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
 		}
 		return status;
 	}
@@ -91,6 +85,24 @@ public class DAOConta {
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
 			ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE email LIKE '" + email + "'");			 
+			if(rs.next()){	 
+				
+				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		
+						rs.getString("senha"), rs.getString("estadoCivil"), rs.getString("personalidade"),
+						rs.getDate("dataDeNascimento"));	
+			}	 
+			st.close();		
+		} catch (Exception e) {			
+			System.err.println(e.getMessage());		
+		}		
+		return usuario;	
+	}
+	
+	public ContaDTO getPersonalidade(int id) {			
+		ContaDTO usuario = new ContaDTO();				
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE id = " + id);			 
 			if(rs.next()){	 
 				
 				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		

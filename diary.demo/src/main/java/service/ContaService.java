@@ -1,7 +1,5 @@
 package service;
 
-import java.awt.event.WindowAdapter;
-
 import com.google.gson.Gson;
 import dao.DAOConta;
 import model.ContaDTO;
@@ -116,6 +114,18 @@ public class ContaService {
 	    }
 	    
 		return gson.toJson(id);
+	}
+	
+	public Object getPerfilUsuario(Request request, Response response) {
+		var id = request.params("id");
+		Gson gson = new Gson();
+		response.header("Content-Encoding", "UTF-8");
+	    response.type("application/json");
+	    
+	    int idUsuario = Integer.parseInt(id);
+	    ContaDTO conta = contaDAO.getPersonalidade(idUsuario);
+	    
+		return gson.toJson(conta.getPersonalidade());
 	}
 	
 	public String pegaAtributoText (String linha) {

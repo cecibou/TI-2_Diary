@@ -68,7 +68,7 @@ public class DAONoticia {
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' ORDER BY noticia.datadepublicacao DESC LIMIT 6 OFFSET 0");		
+			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");		
 			if(rs.next()){
 				rs.last();
 				noticia = new Noticia[rs.getRow()];
