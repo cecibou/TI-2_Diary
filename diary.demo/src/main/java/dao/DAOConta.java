@@ -12,11 +12,11 @@ public class DAOConta {
 	
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";          
-		String serverName = "diary.postgres.database.azure.com";
+		String serverName = "diaryadm.postgres.database.azure.com";
 		String mydatabase = "diary";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta + "/" + mydatabase; 
-		String username = "adm@diary";
+		String username = "admdiary@diaryadm";
 		String password = "@Dmdiary";
 		boolean status = false;
 		try {
