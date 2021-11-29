@@ -33,7 +33,11 @@
       <artifactId>heroku-maven-plugin</artifactId>
       <version>3.0.4</version>
       <configuration>
-        <appName>ti2diary</appName>
+            <logProgress>true</logProgress>
+                    <appName>ti2diary</appName>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -Dserver.port=$PORT -cp target/classes:target/dependency/* app.Aplicacao</web>
+                    </processTypes>
       </configuration>
     </plugin>
   </plugins>
