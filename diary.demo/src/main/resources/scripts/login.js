@@ -112,7 +112,7 @@ function loginID () {
     const settings = {
         "async": true,           //ser assincrono
         "crossDomain": true,     //pegar de outros dominios
-        "url": `http://localhost:4567/contaLocalStorage/${email}`,
+        "url": `${window.location.protocol}//${window.location.host}/contaLocalStorage/${email}`,
         "method": "GET"
     };
 

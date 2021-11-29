@@ -13,7 +13,7 @@ function MontarNoticias (){
         const settings1 = {
             "async": true,           //ser assincrono
             "crossDomain": true,     //pegar de outros dominios
-            "url": `http://localhost:4567/getPerfil/${id}`,
+            "url": `${window.location.protocol}//${window.location.host}/getPerfil/${id}`,
             "method": "GET"
         };
 
@@ -31,7 +31,7 @@ function MontarNoticias (){
                 const settings2 = {
                     "async": true,           
                     "crossDomain": true,     
-                    "url": `http://localhost:4567/news/${perfil}`,
+                    "url": `${window.location.protocol}//${window.location.host}/news/${perfil}`,
                     "method": "POST"
                 };
                 $.ajax(settings2).done(function (data) {
@@ -41,7 +41,7 @@ function MontarNoticias (){
                 const settings3 = {
                     "async": true,           
                     "crossDomain": true,     
-                    "url": `http://localhost:4567/recomendacao/${perfil}/${id}`,
+                    "url": `${window.location.protocol}//${window.location.host}/recomendacao/${perfil}/${id}`,
                     "method": "GET"
                 };
                 $.ajax(settings3).done(function (data) {
@@ -74,24 +74,6 @@ function MontarNoticias (){
                     }
                     $("#noticias").html(elementosNoticias);
                 })
-
-
-
-                /*
-                $.ajax(settings).done(function (data) {
-                    const elementosNoticias = data.map(noticia=>(
-                        `<div class="card" style="width: 20rem; margin-bottom: 5%">
-                            <img src="${noticia.urlToImage === "null"?"https://www.fiscalti.com.br/wp-content/uploads/2021/06/planilhas-para-controle-financeiro-gratis-quantosobra.png":noticia.urlToImage}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${noticia.titulo}</h5>
-                                <p>Data de Publicação: ${noticia.dataDePublicacao}</p>
-                                <a href="${noticia.url}" class="btn btn-primary" target="_blank">Ler notícia completa</a>
-                            </div>
-                        </div>`
-                    ));
-                    $("#noticias").html(elementosNoticias);
-                })
-                */
             }
         })
     }
