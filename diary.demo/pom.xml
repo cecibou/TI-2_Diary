@@ -32,11 +32,7 @@
       <groupId>com.heroku.sdk</groupId>
       <artifactId>heroku-maven-plugin</artifactId>
       <version>3.0.4</version>
-<<<<<<< HEAD
        <configuration>
-=======
-      <configuration>
->>>>>>> 098a2e00b582f09cceef7512483c0cca61707dfb
             <logProgress>true</logProgress>
                     <appName>ti2diary</appName>
                     <processTypes>
