@@ -44,7 +44,7 @@ function MontarNoticias (){
                     "async": true,           
                     "crossDomain": true,     
                     "url": `${window.location.protocol}//${window.location.host}/recomendacao/${perfil}/${id}`,
-                    //"url": `http://localhost:4567/news/${perfil}`,
+                    //"url": `http://localhost:4567/recomendacao/${perfil}/${id}`,
                     "method": "GET"
                 };
                 $.ajax(settings3).done(function (data) {

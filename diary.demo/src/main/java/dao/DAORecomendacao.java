@@ -45,7 +45,7 @@ public class DAORecomendacao {
 		return status;
 	}
 	
-	public boolean inserirRecomendacao(int conta_id, int noticia_id, String dataDeRecomendacao) {
+	public boolean inserirRecomendacao(int conta_id, int noticia_id, Date dataDeRecomendacao) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
@@ -61,12 +61,12 @@ public class DAORecomendacao {
 		return status;
 	}
 	
-	public Recomendacao[] getPorData(String data) {			
+	public Recomendacao[] getPorData(int id, Date data) {			
 		Recomendacao[] recomendacao = null;		
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE dataderecomendacao = '" + data + "' ORDER BY dataderecomendacao DESC");			 
+			ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " AND dataderecomendacao = '" + data + "' ORDER BY dataderecomendacao DESC");			 
 			if(rs.next()){	 
 				rs.last();
 				recomendacao = new Recomendacao[rs.getRow()];

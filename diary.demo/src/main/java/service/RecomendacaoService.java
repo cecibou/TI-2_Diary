@@ -1,9 +1,6 @@
 package service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
+import java.sql.Date;
 
 import com.google.gson.Gson;
 
@@ -37,18 +34,17 @@ public class RecomendacaoService {
 	}
 	
 	public void getNewsESelecionar(int id, char classificacao) {
-		TimeZone tz = TimeZone.getTimeZone("UTC");
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // Quoted "Z" to indicate UTC, no timezone offset
-		df.setTimeZone(tz);
-		String nowAsISO = df.format(new Date());
+		 long millis =  System.currentTimeMillis();
+	     java.sql.Date date = new java.sql.Date(millis);
+	     Date dataCriacao = date;
 		
-		var recomendacao = recomendacaoDAO.getPorData(nowAsISO); 
+		var recomendacao = recomendacaoDAO.getPorData(id, dataCriacao); 
 		if(recomendacao == null) {
 			int y = 0;
 			Noticia [] noticia = recomendacaoDAO.getNoticiasPerfil(classificacao);
 			for(int i = 0; i < 6 && y < 10; ) {
 				if(! recomendacaoDAO.getExists(id, noticia[y].getId())) {
-					recomendacaoDAO.inserirRecomendacao(id, noticia[y].getId(), nowAsISO);
+					recomendacaoDAO.inserirRecomendacao(id, noticia[y].getId(), dataCriacao);
 					i++;
 				}
 				y++;
@@ -68,6 +64,7 @@ public class RecomendacaoService {
 	    response.type("application/json");
 	    response.status(200);
 	    Recomendacao[] recomendacoes = recomendacaoDAO.getRecomendacoes(id);
+	    
 	    NoticiaERecomendacao[] notERec = new NoticiaERecomendacao[recomendacoes.length];
 	    Noticia noticia = new Noticia();
 	    
