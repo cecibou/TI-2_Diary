@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import model.Noticia;
 
 public class DAONoticia {
-	private Connection conexao = null;
+	private static Connection conexao;
 	
 	public DAONoticia() {
-		this.conexao = null;
+		conexao = null;
 	}
 	
 	public boolean conectar() {
@@ -61,6 +61,27 @@ public class DAONoticia {
 			throw new RuntimeException(u);
 		}
 		return status;
+	}
+	
+	public static boolean getExists(String titulo, char classificacao) {			
+		Noticia noticia = new Noticia();		
+		boolean resp = false;
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE titulo LIKE '" + titulo + "' AND classificacao LIKE '" + classificacao + "'");			 
+			if(rs.next()){	 
+				
+				noticia = new Noticia(rs.getInt("id"), rs.getString("titulo"), rs.getString("url"), 
+						rs.getString("urlToImage"), rs.getString("classificacao").charAt(0), rs.getDate("dataDePublicacao"));
+				if(noticia.getTitulo().compareTo(titulo) == 0) {
+					resp = true;
+				} 
+			}	 
+			st.close();		
+		} catch (Exception e) {			
+			System.err.println(e.getMessage());		
+		}		
+		return resp;	
 	}
 	
 	public Noticia[] getNoticiasPerfil(char classificacao) {		

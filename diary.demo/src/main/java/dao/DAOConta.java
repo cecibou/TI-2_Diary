@@ -50,7 +50,7 @@ public class DAOConta {
 				+ " VALUES ("
 				+ "'"+ email + "',"
 				+ "'"+ nome +"',"
-				+ "'"+ senha +"')";
+				+ "crypt('" + senha +  "', gen_salt('bf')));";
 		try {  
 			Statement st = conexao.createStatement();
 			st.execute(sql);  
@@ -66,7 +66,7 @@ public class DAOConta {
 		boolean status = false;
 		String sql= "SELECT count(*) FROM  public.conta WHERE ("
 				+ "email = '"+ email + "' AND "
-				+ "senha = '"+ senha +"')";
+				+ "senha = crypt('" + senha + "', senha))";
 		try {  
 			Statement st = conexao.createStatement();
 			ResultSet rs= st.executeQuery(sql); 

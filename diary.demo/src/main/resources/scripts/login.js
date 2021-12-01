@@ -24,7 +24,6 @@ function generateUUID() { // Public Domain/MIT
     });
 }
 
-
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
@@ -32,7 +31,6 @@ const dadosIniciais = {
         { "id": generateUUID (), "login": "admin@abc.com", "senha": "123", "nome": "Usuario Comum"},
     ]
 };
-
 
 // Inicializa o usuarioCorrente e banco de dados de usuários da aplicação de Login
 function initLoginApp () {
@@ -65,7 +63,6 @@ function initLoginApp () {
     }
 };
 
-
 // Verifica se o login do usuário está ok e, se positivo, direciona para a página inicial
 function loginUser ( event ) {
     const email = document.querySelector('#email');
@@ -92,7 +89,6 @@ function loginUser ( event ) {
             return true;
         }
     }
-
     // Se chegou até aqui é por que não encontrou o usuário e retorna falso
     return false;
 }
@@ -112,8 +108,8 @@ function loginID () {
     const settings = {
         "async": true,           //ser assincrono
         "crossDomain": true,     //pegar de outros dominios
-        "url": `${window.location.protocol}//${window.location.host}/contaLocalStorage/${email}`,
-        //"url": `http://localhost:4567/contaLocalStorage/${email}`,
+        //"url": `${window.location.protocol}//${window.location.host}/contaLocalStorage/${email}`,
+        "url": `http://localhost:4567/contaLocalStorage/${email}`,
         "method": "GET"
     };
 
@@ -138,7 +134,6 @@ function addUser (nome, login, senha) {
 function setUserPass () {
 
 }
-
 
 // Inicializa as estruturas utilizadas pelo LoginApp
 //initLoginApp ();

@@ -22,11 +22,11 @@ public class RecomendacaoService {
 	public char getClassificacao (String perfil) {
 		char classificacao = '_';
 		
-		if(perfil.charAt(0) == 'C') {
+		if(perfil.charAt(0) == 'c') {
 			classificacao = '1';
-		} else if (perfil.charAt(0) == 'L') {
+		} else if (perfil.charAt(0) == 'l') {
 			classificacao = '2';
-		} else if (perfil.charAt(0) == 'M') {
+		} else if (perfil.charAt(0) == 'm') {
 			classificacao = '3';
 		}
 		
