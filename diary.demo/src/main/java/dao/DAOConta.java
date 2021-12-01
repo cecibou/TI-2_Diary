@@ -47,7 +47,8 @@ public class DAOConta {
 		boolean status = false;
 		try {  
 			PreparedStatement st = conexao.prepareStatement(
-				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, ?)"
+				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, crypt(?, gen_salt('bf')))"
+				
 			);
 			st.setString(1, email);
 			st.setString(2, nome);
@@ -78,11 +79,17 @@ public class DAOConta {
 		return status;
 	}
 	
+
 	public ContaDTO getIdUsuario(String email) {			
 		ContaDTO usuario = new ContaDTO();				
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE email LIKE '" + email + "'");			 
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			// ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE email LIKE '" + email + "'");	
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM conta WHERE email LIKE ?");
+			st.setString(1, email);
+			ResultSet rs = st.executeQuery();
+
+			
 			if(rs.next()){	 
 				
 				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		

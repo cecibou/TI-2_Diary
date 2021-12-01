@@ -1,5 +1,6 @@
 package dao;
 
+import java.net.ContentHandler;
 import java.sql.*;
 
 import model.Noticia;
@@ -48,11 +49,17 @@ public class DAORecomendacao {
 	public boolean inserirRecomendacao(int conta_id, int noticia_id, Date dataDeRecomendacao) {
 		boolean status = false;
 		try {  
-			Statement st = conexao.createStatement();
-			st.execute("INSERT INTO recomendacao (conta_id, noticia_id, dataderecomendacao) VALUES ("
-					+ conta_id + ","+
-					+ noticia_id + ","
-					+ "'"+dataDeRecomendacao+"')");  
+			// Statement st = conexao.createStatement();
+			// st.execute("INSERT INTO recomendacao (conta_id, noticia_id, dataderecomendacao) VALUES ("
+			// 		+ conta_id + ","+
+			// 		+ noticia_id + ","
+			// 		+ "'"+dataDeRecomendacao+"')");
+            
+            PreparedStatement st = conexao.prepareStatement("INSERT INTO recomendacao (conta_id, noticia_id, dataderecomendacao) VALUES (?, ?, ?");
+            st.setInt(1, conta_id);
+            st.setInt(2, noticia_id);
+            st.setString(3, dataDeRecomendacao.toString());
+			st.execute();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -65,8 +72,15 @@ public class DAORecomendacao {
 		Recomendacao[] recomendacao = null;		
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " AND dataderecomendacao = '" + data + "' ORDER BY dataderecomendacao DESC");			 
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			// ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " AND dataderecomendacao = '" + data + "' ORDER BY dataderecomendacao DESC");
+            
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? AND dataderecomendacao = ? ORDER BY dataderecomendacao DESC");		
+            
+            st.setInt(1, id);
+            st.setString(2, data.toString());
+            ResultSet rs = st.executeQuery();
+
 			if(rs.next()){	 
 				rs.last();
 				recomendacao = new Recomendacao[rs.getRow()];
@@ -86,8 +100,14 @@ public class DAORecomendacao {
 		Noticia[] noticia = null;
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0"); //	AND id > 120 LIMIT 10 OFFSET 0");	
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0"); //	AND id > 120 LIMIT 10 OFFSET 0");
+
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0");
+			
+            st.setInt(1, classificacao);
+            ResultSet rs = st.executeQuery();
+            
 			if(rs.next()){
 				rs.last();
 				noticia = new Noticia[rs.getRow()];
@@ -109,8 +129,14 @@ public class DAORecomendacao {
 		Noticia noticia = null;
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE id = " + id);
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE id = " + id);
+
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE id = ?");
+
+            st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+
 			if(rs.next()){
 
 				noticia = new Noticia(rs.getInt("id"), rs.getString("titulo"), rs.getString("url"), 
@@ -127,8 +153,15 @@ public class DAORecomendacao {
 		Recomendacao recomendacao = new Recomendacao();		
 		boolean resp = false;
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + idConta + " AND noticia_id = " + idNoticia);			 
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			// ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + idConta + " AND noticia_id = " + idNoticia);
+            
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? AND noticia_id = ?");
+            
+            st.setInt(1, idConta);
+            st.setInt(2, idNoticia);
+			ResultSet rs = st.executeQuery();
+
 			if(rs.next()){	 
 				
 				recomendacao = new Recomendacao(rs.getInt("conta_id"), rs.getInt("noticia_id"), rs.getDate("dataderecomendacao"));	
@@ -149,8 +182,14 @@ public class DAORecomendacao {
 		Recomendacao[] recomendacao = null;
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0");		
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			// ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0");
+
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0");
+
+            st.setInt(1, id);
+			ResultSet rs = st.executeQuery();            
+            
 			if(rs.next()){
 				rs.last();
 				recomendacao = new Recomendacao[rs.getRow()];
@@ -170,8 +209,13 @@ public class DAORecomendacao {
 	public boolean excluirRecomendacao(int id) {
 		boolean status = false;
 		try {  
-			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM recomendacao WHERE id = " + id);
+			// Statement st = conexao.createStatement();
+			// st.executeUpdate("DELETE FROM recomendacao WHERE id = " + id);
+
+            PreparedStatement st = conexao.prepareStatement("DELETE FROM recomendacao WHERE id = ?");
+
+            st.setInt(1, id);
+			st.executeUpdate();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  

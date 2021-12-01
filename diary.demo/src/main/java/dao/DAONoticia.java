@@ -48,13 +48,21 @@ public class DAONoticia {
 	public boolean inserirNoticia(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) {
 		boolean status = false;
 		try {  
-			Statement st = conexao.createStatement();
-			st.execute("INSERT INTO noticia (titulo, url, urlToImage, classificacao, dataDePublicacao) VALUES ("
-					+ "'"+titulo.replaceAll("'", "")+"',"
-					+ "'"+url+"',"
-					+ "'"+urlToImage+"',"
-					+ "'"+classificacao+"',"
-					+ "'"+dataDePublicacao+"')");  
+			// Statement st = conexao.createStatement();
+			// st.execute("INSERT INTO noticia (titulo, url, urlToImage, classificacao, dataDePublicacao) VALUES ("
+			// 		+ "'"+titulo.replaceAll("'", "")+"',"
+			// 		+ "'"+url+"',"
+			// 		+ "'"+urlToImage+"',"
+			// 		+ "'"+classificacao+"',"
+			// 		+ "'"+dataDePublicacao+"')"); 
+
+			PreparedStatement st = conexao.prepareStatement("INSERT INTO noticia (titulo, url, urlToImage, classificacao, dataDePublicacao) VALUES (?,?,?,?,?)");
+			st.setString(1, titulo.replaceAll("'", ""));
+			st.setString(2, url);
+			st.setString(3, urlToImage);
+			st.setInt(4, classificacao);
+			st.setString(5, dataDePublicacao); 
+			st.execute();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -67,8 +75,14 @@ public class DAONoticia {
 		Noticia[] noticia = null;
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");		
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");
+			
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");
+
+			st.setInt(1, classificacao);
+			ResultSet rs = st.executeQuery();
+			
 			if(rs.next()){
 				rs.last();
 				noticia = new Noticia[rs.getRow()];
@@ -90,8 +104,14 @@ public class DAONoticia {
 		Noticia[] noticia = null;
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' AND noticia.datadepublicacao = '" + data.toString() + "'");		
+			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' AND noticia.datadepublicacao = '" + data.toString() + "'");
+			
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE noticia.classificacao LIKE ? AND noticia.datadepublicacao = ?");
+			
+			st.setString(1, data.toString());
+			ResultSet rs = st.executeQuery();
+			
 			if(rs.next()){
 				rs.last();
 				noticia = new Noticia[rs.getRow()];
@@ -112,8 +132,12 @@ public class DAONoticia {
 	public boolean excluirNoticia(int id) {
 		boolean status = false;
 		try {  
-			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM noticia WHERE id = " + id);
+			// Statement st = conexao.createStatement();
+			// st.executeUpdate("DELETE FROM noticia WHERE id = " + id);
+
+			PreparedStatement st = conexao.prepareStatement("DELETE FROM noticia WHERE id = ?");
+			st.setInt(1, id);
+			st.executeUpdate();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
