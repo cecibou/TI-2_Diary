@@ -30,7 +30,7 @@ public class NoticiaService {
 		numModerado = 0;
 	}
 	
-	public void conexaoAPI(char classificacao, String url) {
+	public void conexaoAPI(char classificacao, String url) throws Exception{
 		var client = HttpClient.newHttpClient();
 		var request = HttpRequest.newBuilder(URI.create(url)).build();
 	        
@@ -42,22 +42,28 @@ public class NoticiaService {
 	        if(classificacao == '1') {
 		        for (ArticleDTO art : obj.articles) {
 		        	if(numConservador < 10) {
-		        		this.save(art.title, art.url, art.urlToImage, '1', art.publishedAt);
-		        		numConservador++;
+						if( ! DAONoticia.getExists(art.title, '1')) {
+							this.save(art.title, art.url, art.urlToImage, '1', art.publishedAt);
+							numConservador++;
+						}
 		        	}
 		        }
 	        } else if (classificacao == '2') {
 	        	for (ArticleDTO art : obj.articles) {
 		        	if(numAgressivo < 10) {
-		        		this.save(art.title, art.url, art.urlToImage, '2', art.publishedAt);
-		        		numAgressivo++;
+		        		if( ! DAONoticia.getExists(art.title, '2')) {
+			        		this.save(art.title, art.url, art.urlToImage, '2', art.publishedAt);
+			        		numAgressivo++;
+		        		}
 		        	}
 		        }
 	        } else if(classificacao == '3') {
 	        	for (ArticleDTO art : obj.articles) {
 		        	if(numModerado < 10) {
-		        		this.save(art.title, art.url, art.urlToImage, '3', art.publishedAt);
-		        		numModerado++;
+		        		if( ! DAONoticia.getExists(art.title, '3')) {
+			        		this.save(art.title, art.url, art.urlToImage, '3', art.publishedAt);
+			        		numModerado++;
+		        		}
 		        	}
 		        }
 	        }
@@ -66,7 +72,7 @@ public class NoticiaService {
 	    }
 	}
 	
-	public void getNewsAPI() {
+	public void getNewsAPI() throws Exception {
 		String[] qConservador = {"selic", "cdi", "fixa", "finanças", "taxa", "guardar", "economia"};
 		String[] qAgressivo = {"b3", "bovespa", "cripto", "investidor", "cotações", "ações"};
 
@@ -87,7 +93,7 @@ public class NoticiaService {
 		}
 		
 		for(int i = 0; i < qAgressivo.length; i++) {
-			if(numModerado < 5) {
+			if(numModerado < 3) {
 				this.conexaoAPI('3', (endPoint + qAgressivo[i] + apiKey));
 			} else {
 				i = qAgressivo.length;
@@ -95,7 +101,7 @@ public class NoticiaService {
 		}
 		
 		for(int i = 0; i < qConservador.length; i++) {
-			if(numModerado < 10) {
+			if(numModerado < 3) {
 				this.conexaoAPI('3', (endPoint + qConservador[i] + apiKey));
 			} else {
 				i = qConservador.length;
@@ -107,7 +113,7 @@ public class NoticiaService {
 		this.noticiaDAO.inserirNoticia(titulo, url, urlToImage, classificacao, dataDePublicacao);
 	}
 	
-	public Object getNews(Request request, Response response) {
+	public Object getNews(Request request, Response response) throws Exception {
 		var perfil = request.params("perfil");
 		Gson gson = new Gson();
 		response.header("Content-Encoding", "UTF-8");
