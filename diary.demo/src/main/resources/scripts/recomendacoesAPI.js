@@ -4,8 +4,9 @@ function MontarNoticias (){
     var id = localStorage.getItem("id");
     var perfil;
     //verificar se o id e' valido, ou seja se usuario esta logado
-    if(! id || id <= 0 ) {
-        window.location.href = "http://127.0.0.1:5501/diary.demo/src/main/resources/login.html";
+    if(! id || id < 0 ) {
+        window.location.href = `${window.location.protocol}//${window.location.host}/login.html` 
+        
         alert("Para ver notícias recomendadas é necessário fazer Login!");
         return; //este return vazio e para nao executar o codigo abaixo
     } else { 
@@ -24,7 +25,7 @@ function MontarNoticias (){
             //verificar se ha uma personalidade valida
             if (perfil != "liberal" && perfil != "conservador" && perfil != "moderado") {
 
-                window.location.href = "http://127.0.0.1:5501/diary.demo/src/main/resources/bot.html";
+                window.location.href = `${window.location.protocol}//${window.location.host}/bot.html`;
                 alert("Para ver notícias recomendadas é necessário classificar seu perfil no Chatbot!");
                 return; //este return vazio e para nao executar o codigo abaixo
             } else {

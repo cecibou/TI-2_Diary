@@ -45,15 +45,14 @@ public class DAOConta {
 	
 	public boolean inserirConta(String email, String nome, String senha) {
 		boolean status = false;
-		String sql= "INSERT INTO public.conta( "
-				+ "email, nome, senha) "
-				+ " VALUES ("
-				+ "'"+ email + "',"
-				+ "'"+ nome +"',"
-				+ "crypt('" + senha +  "', gen_salt('bf')));";
 		try {  
-			Statement st = conexao.createStatement();
-			st.execute(sql);  
+			PreparedStatement st = conexao.prepareStatement(
+				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, ?)"
+			);
+			st.setString(1, email);
+			st.setString(2, nome);
+			st.setString(3, senha);
+			st.execute();  
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -64,12 +63,11 @@ public class DAOConta {
 	
 	public boolean checkUser(String email, String senha) {
 		boolean status = false;
-		String sql= "SELECT count(*) FROM  public.conta WHERE ("
-				+ "email = '"+ email + "' AND "
-				+ "senha = crypt('" + senha + "', senha))";
 		try {  
-			Statement st = conexao.createStatement();
-			ResultSet rs= st.executeQuery(sql); 
+			PreparedStatement st = conexao.prepareStatement("SELECT count(*) FROM  public.conta WHERE email = ? AND senha = ?");
+			st.setString(1, email);
+			st.setString(2, senha);
+			ResultSet rs= st.executeQuery(); 
 			rs.next();
 			int resultadoLogin = rs.getInt(1);
 			status = resultadoLogin > 0;
@@ -101,10 +99,14 @@ public class DAOConta {
 	public ContaDTO getPersonalidade(int id) {			
 		ContaDTO usuario = new ContaDTO();				
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE id = " + id);			 
+			// Stateent st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			PreparedStatement st = conexao.prepareStatement(
+				"SELECT * FROM conta WHERE id = ?"
+			);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+	
 			if(rs.next()){	 
-				
 				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		
 						rs.getString("senha"), rs.getString("estadoCivil"), rs.getString("personalidade"),
 						rs.getDate("dataDeNascimento"));	
@@ -113,17 +115,20 @@ public class DAOConta {
 		} catch (Exception e) {			
 			System.err.println(e.getMessage());		
 		}		
+
 		return usuario;	
 	}
 	
 	public boolean atualizarConta(String email, String estadoCivil, String personalidade, String dataDeNascimento) {
 		boolean status = false;
 		try {  
-			Statement st = conexao.createStatement();
-			String sql = "UPDATE conta SET estadocivil = '" + estadoCivil + "', datadenascimento = '" +
-					   dataDeNascimento + "', personalidade = '" + personalidade + "'"
-					   + " WHERE email LIKE '" + email + "'";
-			st.executeUpdate(sql);
+			PreparedStatement st = conexao.prepareStatement("UPDATE conta SET estadocivil = ?, datadenascimento = ?, personalidade = ? WHERE email LIKE ?");
+
+			st.setString(1, estadoCivil);
+			st.setString(2, dataDeNascimento);
+			st.setString(3, personalidade);
+			st.setString(4, email);
+			st.executeUpdate();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
