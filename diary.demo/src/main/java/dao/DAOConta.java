@@ -47,8 +47,8 @@ public class DAOConta {
 		boolean status = false;
 		try {  
 			PreparedStatement st = conexao.prepareStatement(
-				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, crypt(?, gen_salt('bf')))"
-				
+				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, ?)"
+				//crypt(?, gen_salt('bf'))
 			);
 			st.setString(1, email);
 			st.setString(2, nome);
