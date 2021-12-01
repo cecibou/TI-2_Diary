@@ -64,9 +64,8 @@
 			<div id="login-row" class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
-						<form id="login-form" class="form" method="post" action="${window.location.protocol}//${window.location.host}/contaLogin">
-                        <!--<form id="login-form" class="form" method="post" action="http://localhost:4567/contaLogin">-->
-							<h3 class="text-center text-info">Login</h3>
+                        <form onsubmit="handleSubmit('login-form', `${window.location.protocol}//${window.location.host}/contaLogin`)" class="form" method="post" id="login-form">
+                            <h3 class="text-center text-info">Login</h3>
 
 							<div class="form-group">
 								<label for="username" class="text-info">Usuário(E-Mail)</label><br>
@@ -99,8 +98,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="login-form" class="form" method="post"
-                action="${window.location.protocol}//${window.location.host}/contaSave">
+        <form onsubmit="handleSubmit('login-create', `${window.location.protocol}//${window.location.host}/contaSave`)" class="form" method="post" id="login-create">        
         <!--<form id="login-form" class="form" method="post" action="http://localhost:4567/contaSave">-->
         <div class="modal-body">
             <div id="login-box" class="col-md-12">
@@ -168,6 +166,10 @@
 </footer>
 
     <script>
+        function handleSubmit(form_name, base_url){
+            var your_form = document.getElementById(form_name);
+            your_form.action = base_url;
+        }
         
         // Declara uma função para processar o formulário de login
         function processaFormLogin (event) {                
@@ -214,7 +216,7 @@
         }
 
         // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-        //document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
+        // document.getElementById ('login-form').addEventListener ('submit', processaFormLogin);
 
 
         // Associar salvamento ao botao
