@@ -54,6 +54,13 @@ public class DAOConta {
 			st.setString(3, senha);
 			st.execute();  
 			st.close();
+			
+			Statement st2 = conexao.createStatement();
+			String cript = "CREATE EXTENSION IF NOT EXIST pgcrypto;";
+			String up = "UPDATE conta SET senha = crypt('senha', gen_salt('bf'))";
+			st2.execute(cript);  
+			st2.execute(up);  
+			st2.close();  
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
