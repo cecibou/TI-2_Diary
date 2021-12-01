@@ -48,20 +48,12 @@ public class DAOConta {
 		try {  
 			PreparedStatement st = conexao.prepareStatement(
 				"INSERT INTO public.conta (email, nome, senha) VALUES (?, ?, ?)"
-				//crypt(?, gen_salt('bf'))
 			);
 			st.setString(1, email);
 			st.setString(2, nome);
 			st.setString(3, senha);
 			st.execute();  
-			st.close();
-			
-			Statement st2 = conexao.createStatement();
-			String cript = "CREATE EXTENSION IF NOT EXIST pgcrypto;";
-			String up = "UPDATE conta SET senha = crypt('senha', gen_salt('bf'))";
-			st2.execute(cript);  
-			st2.execute(up);  
-			st2.close();  
+			st.close(); 
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
