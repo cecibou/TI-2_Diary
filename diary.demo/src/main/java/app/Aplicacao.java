@@ -18,6 +18,7 @@ public class Aplicacao {
 		String systemPort = System.getenv("PORT");
         int port = systemPort != null ? Integer.parseInt(systemPort) : 4567;
         port(port);
+        
 
 		staticFiles.location("/");
 		after((Filter) (request, response) -> {

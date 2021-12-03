@@ -75,8 +75,8 @@ public class NoticiaService {
 	}
 	
 	public void getNewsAPI() throws Exception {
-		String[] qConservador = {"selic", "cdi", "fixa", "finanças", "taxa", "guardar", "economia"};
-		String[] qAgressivo = {"b3", "bovespa", "cripto", "investidor", "cotações", "ações"};
+		String[] qConservador = {"selic", "cdi", "fixa", "finanças", "taxa", "guardar", "economia", "pagamento", "caixa", "PIB"};
+		String[] qAgressivo = {"b3", "bovespa", "cripto", "investidor", "cotações", "ações", "bancos"};
 
 		for(int i = 0; i < qConservador.length; i++) {
 			if(numConservador < 10) {
@@ -94,21 +94,9 @@ public class NoticiaService {
 			}
 		}
 		
-		for(int i = 0; i < qAgressivo.length; i++) {
-			if(numModerado < 3) {
-				this.conexaoAPI('3', (endPoint + qAgressivo[i] + apiKey));
-			} else {
-				i = qAgressivo.length;
-			}
-		}
-		
-		for(int i = 0; i < qConservador.length; i++) {
-			if(numModerado < 3) {
-				this.conexaoAPI('3', (endPoint + qConservador[i] + apiKey));
-			} else {
-				i = qConservador.length;
-			}
-		}
+		if(numModerado < 10) {
+			this.conexaoAPI('3', (endPoint + apiKey));
+		} 
 	}
 	
 	public void save(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) throws ParseException {
