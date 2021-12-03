@@ -1,6 +1,5 @@
 package dao;
 
-import java.net.ContentHandler;
 import java.sql.*;
 
 import model.Noticia;
@@ -55,11 +54,11 @@ public class DAORecomendacao {
 			// 		+ noticia_id + ","
 			// 		+ "'"+dataDeRecomendacao+"')");
             
-            PreparedStatement st = conexao.prepareStatement("INSERT INTO recomendacao (conta_id, noticia_id, dataderecomendacao) VALUES (?, ?, ?");
+            PreparedStatement st = conexao.prepareStatement("INSERT INTO recomendacao (conta_id, noticia_id, dataderecomendacao) VALUES (?, ?, ?)");
             st.setInt(1, conta_id);
             st.setInt(2, noticia_id);
-            st.setString(3, dataDeRecomendacao.toString());
-			st.execute();
+            st.setDate(3, dataDeRecomendacao);
+			st.executeUpdate();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -72,13 +71,14 @@ public class DAORecomendacao {
 		Recomendacao[] recomendacao = null;		
 		
 		try {
-			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
+			//Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
 			// ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " AND dataderecomendacao = '" + data + "' ORDER BY dataderecomendacao DESC");
             
-            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? AND dataderecomendacao = ? ORDER BY dataderecomendacao DESC");		
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? AND dataderecomendacao = ? ORDER BY dataderecomendacao DESC",
+            		ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);		
             
             st.setInt(1, id);
-            st.setString(2, data.toString());
+            st.setDate(2, data);
             ResultSet rs = st.executeQuery();
 
 			if(rs.next()){	 
@@ -103,9 +103,10 @@ public class DAORecomendacao {
 			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0"); //	AND id > 120 LIMIT 10 OFFSET 0");
 
-            PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0");
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 10 OFFSET 0",
+            		ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
-            st.setInt(1, classificacao);
+            st.setString(1, classificacao + "");
             ResultSet rs = st.executeQuery();
             
 			if(rs.next()){
@@ -185,7 +186,8 @@ public class DAORecomendacao {
 			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			// ResultSet rs = st.executeQuery("SELECT * FROM recomendacao WHERE conta_id = " + id + " ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0");
 
-            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0");
+            PreparedStatement st = conexao.prepareStatement("SELECT * FROM recomendacao WHERE conta_id = ? ORDER BY dataderecomendacao DESC LIMIT 18 OFFSET 0", 
+            		ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
             st.setInt(1, id);
 			ResultSet rs = st.executeQuery();            

@@ -49,7 +49,7 @@ function MontarNoticias (){
                     "method": "GET"
                 };
                 $.ajax(settings3).done(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     let noticias = {};
 
                     data.forEach(element => {
@@ -65,9 +65,10 @@ function MontarNoticias (){
                     for (var prop in noticias) {
                         elementosNoticias.push(`<div style="display: flex !important; width: 100%; text-align: justify; padding-bottom: 40px; padding-top: 40px"><h4 class="card-title">Data de Recomendação: ${prop}</h4></div>`);
                         noticias[prop].forEach(noticia=> {
+                            //console.log(noticia.urlToImage);
                             elementosNoticias.push(
                                 `<div class="card" style="width: 20rem; margin-bottom: 5%">
-                                    <img src="${noticia.urlToImage === "null"?"https://www.fiscalti.com.br/wp-content/uploads/2021/06/planilhas-para-controle-financeiro-gratis-quantosobra.png":noticia.urlToImage}" class="card-img-top" alt="...">
+                                <img src="${noticia.urlToImage}" onerror="this.onerror=null; this.src='https://www.fiscalti.com.br/wp-content/uploads/2021/06/planilhas-para-controle-financeiro-gratis-quantosobra.png'" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title">${noticia.titulo}</h5>
                                         <p>Data de Publicação: ${noticia.dataDePublicacao}</p>

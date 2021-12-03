@@ -18,7 +18,6 @@ public class Aplicacao {
 		String systemPort = System.getenv("PORT");
         int port = systemPort != null ? Integer.parseInt(systemPort) : 4567;
         port(port);
-		
 
 		staticFiles.location("/");
 		after((Filter) (request, response) -> {
@@ -29,7 +28,7 @@ public class Aplicacao {
 
 		get("/getPerfil/:id", (request, response) -> contaService.getPerfilUsuario(request, response));
 		get("/userAuth", (request, response) -> contaService.userAuth(request, response));
-		get("/contaLocalStorage/:email", (request, response) -> contaService.getIDUsuario(request, response));
+		get("/contaLocalStorage/:email/:senha", (request, response) -> contaService.getIDUsuario(request, response));
 		get("/recomendacao/:perfil/:id", (request, response) -> recomendacaoService.getRecomendacoes(request, response));
 		post("/news/:perfil", (request, response) -> noticiaService.getNews(request, response));
 		post("/contaSave", (request, response) -> contaService.saveAPI(request, response));

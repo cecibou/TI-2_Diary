@@ -42,12 +42,14 @@ public class RecomendacaoService {
 		if(recomendacao == null) {
 			int y = 0;
 			Noticia [] noticia = recomendacaoDAO.getNoticiasPerfil(classificacao);
-			for(int i = 0; i < 6 && y < 10; ) {
-				if(! recomendacaoDAO.getExists(id, noticia[y].getId())) {
-					recomendacaoDAO.inserirRecomendacao(id, noticia[y].getId(), dataCriacao);
-					i++;
+			if(noticia != null) {
+				for(int i = 0; i < 6 && y < 10; ) {
+					if(! recomendacaoDAO.getExists(id, noticia[y].getId())) {
+						recomendacaoDAO.inserirRecomendacao(id, noticia[y].getId(), dataCriacao);
+						i++;
+					}
+					y++;
 				}
-				y++;
 			}
 		}
 	}
@@ -65,19 +67,22 @@ public class RecomendacaoService {
 	    response.status(200);
 	    Recomendacao[] recomendacoes = recomendacaoDAO.getRecomendacoes(id);
 	    
-	    NoticiaERecomendacao[] notERec = new NoticiaERecomendacao[recomendacoes.length];
-	    Noticia noticia = new Noticia();
-	    
-	    for(int i = 0; i < recomendacoes.length; i++) {
-	    	notERec[i] = new NoticiaERecomendacao();
-	    	notERec[i].setDataDeRecomendacao(recomendacoes[i].getDataDeRecomendacao());
-	    	noticia = recomendacaoDAO.getNoticia(recomendacoes[i].getNoticiaId());
-	    	notERec[i].setTitulo(noticia.getTitulo());
-	    	notERec[i].setURL(noticia.getURL());
-	    	notERec[i].setURLToImage(noticia.getURLToImage());
-	    	notERec[i].setDataDePublicacao(noticia.getDataDePublicacao());
+	    if(recomendacoes != null) {
+		    NoticiaERecomendacao[] notERec = new NoticiaERecomendacao[recomendacoes.length];
+		    Noticia noticia = new Noticia();
+		    
+		    for(int i = 0; i < recomendacoes.length; i++) {
+		    	notERec[i] = new NoticiaERecomendacao();
+		    	notERec[i].setDataDeRecomendacao(recomendacoes[i].getDataDeRecomendacao());
+		    	noticia = recomendacaoDAO.getNoticia(recomendacoes[i].getNoticiaId());
+		    	notERec[i].setTitulo(noticia.getTitulo());
+		    	notERec[i].setURL(noticia.getURL());
+		    	notERec[i].setURLToImage(noticia.getURLToImage());
+		    	notERec[i].setDataDePublicacao(noticia.getDataDePublicacao());
+		    }
+		    
+			return gson.toJson(notERec);
 	    }
-	    
-		return gson.toJson(notERec);
+	    return "erro";
 	}
 }

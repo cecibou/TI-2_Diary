@@ -1,7 +1,7 @@
 package dao;
 
 import java.sql.*;
-import java.time.LocalDate;
+import java.text.ParseException;
 
 import model.Noticia;
 
@@ -45,8 +45,10 @@ public class DAONoticia {
 		return status;
 	}
 	
-	public boolean inserirNoticia(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) {
+	public boolean inserirNoticia(String titulo, String url, String urlToImage, char classificacao, Date dataDePublicacao) throws ParseException {
 		boolean status = false;
+	    
+		String perfil = classificacao + "";
 		try {  
 			// Statement st = conexao.createStatement();
 			// st.execute("INSERT INTO noticia (titulo, url, urlToImage, classificacao, dataDePublicacao) VALUES ("
@@ -60,9 +62,9 @@ public class DAONoticia {
 			st.setString(1, titulo.replaceAll("'", ""));
 			st.setString(2, url);
 			st.setString(3, urlToImage);
-			st.setInt(4, classificacao);
-			st.setString(5, dataDePublicacao); 
-			st.execute();
+			st.setString(4, perfil);
+			st.setDate(5, dataDePublicacao); 
+			st.executeUpdate();
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -75,17 +77,20 @@ public class DAONoticia {
 		Noticia noticia = new Noticia();		
 		boolean resp = false;
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
-			ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE titulo LIKE '" + titulo + "' AND classificacao LIKE '" + classificacao + "'");			 
-			if(rs.next()){	 
-				
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE titulo LIKE ? AND classificacao LIKE ?");
+
+			st.setString(1, titulo);
+			st.setString(2, (classificacao + ""));
+			ResultSet rs = st.executeQuery();
+
+			if(rs.next()){
 				noticia = new Noticia(rs.getInt("id"), rs.getString("titulo"), rs.getString("url"), 
 						rs.getString("urlToImage"), rs.getString("classificacao").charAt(0), rs.getDate("dataDePublicacao"));
 				if(noticia.getTitulo().compareTo(titulo) == 0) {
 					resp = true;
 				} 
-			}	 
-			st.close();		
+			}
+			st.close();	
 		} catch (Exception e) {			
 			System.err.println(e.getMessage());		
 		}		
@@ -99,9 +104,10 @@ public class DAONoticia {
 			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE classificacao LIKE '" + classificacao + "' ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");
 			
-			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0");
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE classificacao LIKE ? ORDER BY datadepublicacao DESC LIMIT 6 OFFSET 0",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			st.setInt(1, classificacao);
+			st.setString(1, (classificacao + ""));
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()){
@@ -121,16 +127,18 @@ public class DAONoticia {
 		return noticia;
 	}
 	
-	public Noticia[] getNoticiasPorData(char classificacao, LocalDate data) {		
+	public Noticia[] getNoticiasPorData(char classificacao, Date data) {		
 		Noticia[] noticia = null;
 		
 		try {
 			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			// ResultSet rs = st.executeQuery("SELECT * FROM noticia WHERE noticia.classificacao LIKE '" + classificacao + "' AND noticia.datadepublicacao = '" + data.toString() + "'");
 			
-			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE noticia.classificacao LIKE ? AND noticia.datadepublicacao = ?");
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM noticia WHERE noticia.classificacao LIKE ? AND noticia.datadepublicacao = ?",
+					ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			
-			st.setString(1, data.toString());
+			st.setString(1, classificacao + "");
+			st.setDate(2, data);
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()){

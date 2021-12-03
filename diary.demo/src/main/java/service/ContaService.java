@@ -1,5 +1,9 @@
 package service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.google.gson.Gson;
 import dao.DAOConta;
 import model.ContaDTO;
@@ -15,8 +19,12 @@ public class ContaService {
 		contaDAO.conectar();
 	}
 	
-	public boolean save(String email, String nome, String senha) { 
-		 return this.contaDAO.inserirConta(email, nome, senha);
+	public boolean save(String email, String nome, String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException { 
+		MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+        String senhaCriptografada = new String(messageDigest, "UTF-8");
+		return this.contaDAO.inserirConta(email, nome, senhaCriptografada);
 		 
 	}
 	
@@ -43,9 +51,12 @@ public class ContaService {
 		return gson.toJson(new ContaDTO(25,email,nome,senha));
 	}
 
-	public boolean Load(String email, String senha) { 
-		 return this.contaDAO.checkUser(email, senha);
-		 
+	public boolean Load(String email, String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException { 
+		MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+        String senhaCriptografada = new String(messageDigest, "UTF-8");
+		return this.contaDAO.checkUser(email, senhaCriptografada);
 	}
 	
 	public Object Login(Request request, Response response) {
@@ -98,15 +109,21 @@ public class ContaService {
 		return gson.toJson("{userAuth:"+status+"}");
 	}
 
-	public Object getIDUsuario(Request request, Response response) {
+	public Object getIDUsuario(Request request, Response response) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		var email = request.params("email");
+		var senha = request.params("senha");
 		Gson gson = new Gson();
 		response.header("Content-Encoding", "UTF-8");
 	    response.type("application/json");
 	    String id = "";
 	    
+	    //Criptografar senha digitada pelo usuario, para comparar com a senha do banco de dados
+	    MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+
+        String senhaCriptografada = new String(messageDigest, "UTF-8");
 	    String emailConta = email;
-	    ContaDTO conta = contaDAO.getIdUsuario(emailConta);
+	    ContaDTO conta = contaDAO.getIdUsuario(emailConta, senhaCriptografada);
 	    if(conta.getId() != 0) {
 	    	id = Integer.toString(conta.getId());
 	    } else {

@@ -103,13 +103,14 @@ function logoutUser () {
 //Procura pelo id no banco de dados referente ao email e coloca no localstorage
 function loginID () {
     var email = document.getElementById('email').value;
+    var senha = document.getElementById('senha').value;
 
     //pegar id do usuario logado do banco de dados
     const settings = {
         "async": true,           //ser assincrono
         "crossDomain": true,     //pegar de outros dominios
-        "url": `${window.location.protocol}//${window.location.host}/contaLocalStorage/${email}`,
-        //"url": `http://localhost:4567/contaLocalStorage/${email}`,
+        "url": `${window.location.protocol}//${window.location.host}/contaLocalStorage/${email}/${senha}`,
+        //"url": `http://localhost:4567/contaLocalStorage/${email}/${senha}`,
         "method": "GET"
     };
 

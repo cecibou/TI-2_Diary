@@ -52,7 +52,7 @@ public class DAOConta {
 			st.setString(1, email);
 			st.setString(2, nome);
 			st.setString(3, senha);
-			st.execute();  
+			st.executeUpdate();  
 			st.close(); 
 			status = true;
 		} catch (SQLException u) {  
@@ -79,16 +79,16 @@ public class DAOConta {
 	}
 	
 
-	public ContaDTO getIdUsuario(String email) {			
+	public ContaDTO getIdUsuario(String email, String senha) {			
 		ContaDTO usuario = new ContaDTO();				
 		try {
 			// Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);			
 			// ResultSet rs = st.executeQuery("SELECT * FROM conta WHERE email LIKE '" + email + "'");	
-			PreparedStatement st = conexao.prepareStatement("SELECT * FROM conta WHERE email LIKE ?");
+			PreparedStatement st = conexao.prepareStatement("SELECT * FROM conta WHERE email LIKE ? AND senha LIKE ?");
 			st.setString(1, email);
+			st.setString(2, senha);
 			ResultSet rs = st.executeQuery();
 
-			
 			if(rs.next()){	 
 				
 				usuario = new ContaDTO(rs.getInt("id"), rs.getString("email"), rs.getString("nome"), 		 		

@@ -4,7 +4,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.google.gson.Gson;
 
@@ -20,7 +22,7 @@ public class NoticiaService {
 	public int numAgressivo;
 	public int numModerado;
 	public static String endPoint = "https://newsapi.org/v2/top-headlines?country=br&category=business&q=";
-	public static String apiKey = "&apiKey=63358a9c1d5b4fe88ac22d386a5a54ad";
+	public static String apiKey = "&apiKey=ac412dde0ec34b16a87d620ff40f04f3";
 	
 	public NoticiaService() {
 		noticiaDAO = new DAONoticia();
@@ -37,7 +39,7 @@ public class NoticiaService {
         try{
 	        var responseFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 	        var response = responseFuture.get();
-	        System.out.println(response.body());
+	        //System.out.println(response.body());
 	        NewsDTO obj = new Gson().fromJson(response.body(), NewsDTO.class);
 	        if(classificacao == '1') {
 		        for (ArticleDTO art : obj.articles) {
@@ -109,8 +111,10 @@ public class NoticiaService {
 		}
 	}
 	
-	public void save(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) {
-		this.noticiaDAO.inserirNoticia(titulo, url, urlToImage, classificacao, dataDePublicacao);
+	public void save(String titulo, String url, String urlToImage, char classificacao, String dataDePublicacao) throws ParseException {
+		java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dataDePublicacao);
+		java.sql.Date data = (java.sql.Date) new Date(date.getTime());
+		this.noticiaDAO.inserirNoticia(titulo, url, urlToImage, classificacao, data);
 	}
 	
 	public Object getNews(Request request, Response response) throws Exception {
@@ -118,25 +122,27 @@ public class NoticiaService {
 		Gson gson = new Gson();
 		response.header("Content-Encoding", "UTF-8");
 	    response.type("application/json");
+	    long miliseconds = System.currentTimeMillis();
+	    java.sql.Date date = (java.sql.Date) new Date(miliseconds);
 		
 		switch(perfil) {
 			case "conservador":
 	    	    response.status(200);
-	    	    var noticiasAtuais = noticiaDAO.getNoticiasPorData('1', LocalDate.now());
+	    	    var noticiasAtuais = noticiaDAO.getNoticiasPorData('1', date);
 	    	    if(noticiasAtuais == null) {
 	    	    	this.getNewsAPI();
 	    	    } 
 				return gson.toJson(noticiaDAO.getNoticiasPerfil('1'));
 			case "liberal":
 				response.status(200);
-				noticiasAtuais = noticiaDAO.getNoticiasPorData('2', LocalDate.now());
+				noticiasAtuais = noticiaDAO.getNoticiasPorData('2', date);
 	    	    if(noticiasAtuais == null) {
 	    	    	this.getNewsAPI();
 	    	    } 
 				return gson.toJson(noticiaDAO.getNoticiasPerfil('2'));
 			case "moderado":
 				response.status(200);
-				noticiasAtuais = noticiaDAO.getNoticiasPorData('3', LocalDate.now());
+				noticiasAtuais = noticiaDAO.getNoticiasPorData('3', date);
 	    	    if(noticiasAtuais == null) {
 	    	    	this.getNewsAPI();
 	    	    } 
