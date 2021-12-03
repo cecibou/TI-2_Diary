@@ -14,8 +14,8 @@ function MontarNoticias (){
         const settings1 = {
             "async": true,           //ser assincrono
             "crossDomain": true,     //pegar de outros dominios
-            "url": `${window.location.protocol}//${window.location.host}/getPerfil/${id}`,
-            //"url": `http://localhost:4567/getPerfil/${id}`,
+            //"url": `${window.location.protocol}//${window.location.host}/getPerfil/${id}`,
+            "url": `http://localhost:4567/getPerfil/${id}`,
             "method": "GET"
         };
 
@@ -33,8 +33,8 @@ function MontarNoticias (){
                 const settings2 = {
                     "async": true,           
                     "crossDomain": true,     
-                    "url": `${window.location.protocol}//${window.location.host}/news/${perfil}`,
-                    //"url": `http://localhost:4567/news/${perfil}`,
+                    //"url": `${window.location.protocol}//${window.location.host}/news/${perfil}`,
+                    "url": `http://localhost:4567/news/${perfil}`,
                     "method": "POST"
                 };
                 $.ajax(settings2).done(function (data) {
@@ -44,8 +44,8 @@ function MontarNoticias (){
                 const settings3 = {
                     "async": true,           
                     "crossDomain": true,     
-                    "url": `${window.location.protocol}//${window.location.host}/recomendacao/${perfil}/${id}`,
-                    //"url": `http://localhost:4567/recomendacao/${perfil}/${id}`,
+                    //"url": `${window.location.protocol}//${window.location.host}/recomendacao/${perfil}/${id}`,
+                    "url": `http://localhost:4567/recomendacao/${perfil}/${id}`,
                     "method": "GET"
                 };
                 $.ajax(settings3).done(function (data) {

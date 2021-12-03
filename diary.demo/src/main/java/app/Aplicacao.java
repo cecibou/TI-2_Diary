@@ -14,11 +14,11 @@ public class Aplicacao {
 	private static RecomendacaoService recomendacaoService = new RecomendacaoService();
 	
 	public static void main(String[] args) throws Exception{
-		
+		/*
 		String systemPort = System.getenv("PORT");
         int port = systemPort != null ? Integer.parseInt(systemPort) : 4567;
         port(port);
-        
+        */
 
 		staticFiles.location("/");
 		after((Filter) (request, response) -> {
