@@ -1,0 +1,17 @@
+{
+  "profileName": "funcionaaaaaaaaaaa",
+  "jobId": "fdc94517-71cd-4d81-8d3a-cf32834ad6e6",
+  "projectId": "95711.01087301694",
+  "time": "2021-12-03T12:57:46.067Z",
+  "log": [
+    "Creating Azure resources...",
+    "Checking the Existence of the Resource Group ...",
+    "Use the Resource Group: BotTIV4 at westeurope",
+    "> Creating App Registration ...",
+    "Start to add password for App, Id : f5fa40ed-5f4a-4b8b-8631-d30a7a5e295c",
+    "> Create App Registration Success! ID: f5fa40ed-5f4a-4b8b-8631-d30a7a5e295c",
+    "Deploying Web App Resource ...",
+    "Deploying Bot Resource ...",
+    "Provisioning completed successfully!"
+  ]
+}
