@@ -55,6 +55,8 @@ public class RecomendacaoService {
 	}
 	
 	public Object getRecomendacoes(Request request, Response response) {
+		response.header("Content-Encoding", "UTF-8");
+	    response.type("application/json");
 		var perfil = request.params("perfil");
 		var idConta = request.params("id");
 		int id = Integer.parseInt(idConta);
@@ -62,9 +64,6 @@ public class RecomendacaoService {
 		getNewsESelecionar(id, classificacao);
 		
 		Gson gson = new Gson();
-		response.header("Content-Encoding", "UTF-8");
-	    response.type("application/json");
-	    response.status(200);
 	    Recomendacao[] recomendacoes = recomendacaoDAO.getRecomendacoes(id);
 	    
 	    if(recomendacoes != null) {
@@ -80,7 +79,7 @@ public class RecomendacaoService {
 		    	notERec[i].setURLToImage(noticia.getURLToImage());
 		    	notERec[i].setDataDePublicacao(noticia.getDataDePublicacao());
 		    }
-		    
+		    response.status(200);
 			return gson.toJson(notERec);
 	    }
 	    return "erro";

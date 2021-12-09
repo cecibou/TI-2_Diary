@@ -41,7 +41,7 @@ public class ContaService {
 		try {
 			boolean status = this.save(email,nome,senha);
 			if(status) {
-			response.redirect("login.html");
+				response.redirect("login.html");
 			}
 			
 		}
